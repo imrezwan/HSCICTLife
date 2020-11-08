@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/_6sdp"
+    android:layout_marginTop="0dp"
+    android:layout_marginBottom="0dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+       <!-- <ImageView
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_120sdp"
+            android:src="@drawable/image_cq_demo_2"
+            android:layout_gravity="center"
+            android:id="@+id/iv_mcq_guide_question_image"
+            />-->
+
+        <TextView
+            android:id="@+id/nav_mcq_guide_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/kalpurush"
+            android:paddingHorizontal="@dimen/_6sdp"
+            android:text="Item"
+            android:textColor="@color/colorDrawerQuestion"
+            android:textSize="@dimen/_15sdp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/nav_mcq_guide_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/kalpurush"
+            android:text="Item\nItem2\nItem3\nItem4"
+            android:paddingLeft="@dimen/_20sdp"
+            android:textColor="@color/colorDrawerQuestion"
+            android:textSize="@dimen/_13sdp"
+            />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginVertical="@dimen/_3sdp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_height="1dp"
+        android:background="#8CB3B8"/>
+
+    <!--<View
+        android:layout_marginBottom="@dimen/_3sdp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#9C8888"/>-->
+
+</LinearLayout>

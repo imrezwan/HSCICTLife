@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".fragments.mainpage.HomeFragment">
+
+    <LinearLayout
+        android:id="@+id/ll_main_intro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_intro_header_bg"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hi,"
+            android:textSize="@dimen/_32sdp"
+            android:textStyle="bold"
+            android:textColor="@color/colorTextWhite"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:fontFamily="sans-serif"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="রেজওয়ান প্রান্ত"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold"
+                android:paddingTop="@dimen/_2sdp"
+                android:textColor="@color/colorTextWhite"
+                android:fontFamily="@font/kalpurush"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rangpur Govt college"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/colorTextWhite"
+                android:fontFamily="@font/kalpurush"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

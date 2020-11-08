@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_mdi_home"
+        android:title="হোম" />
+
+    <item
+        android:id="@+id/nav_quiz"
+        android:icon="@drawable/ic_quiz_icon"
+        android:title="কুইজ" />
+
+    <item
+        android:id="@+id/nav_ranking"
+        android:icon="@drawable/ic_ranking_icon"
+        android:title="র‍্যাংকিং" />
+
+    <item
+        android:id="@+id/nav_tools"
+        android:icon="@drawable/ic_tools_icon"
+        android:title="টুলস" />
+
+    <item
+        android:id="@+id/nav_more"
+        android:icon="@drawable/ic_more_icon"
+        android:title="আরো" />
+
+</menu>

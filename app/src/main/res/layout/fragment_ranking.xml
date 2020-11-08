@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.mainpage.RankingFragment">
+
+    <LinearLayout
+        android:background="@drawable/quiz_top_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_back"
+            android:padding="@dimen/_15sdp"
+            android:id="@+id/tv_back_btn"/>
+
+        <TextView
+            android:layout_weight="5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/colorTextPrimary"
+            android:text="@string/mcq_chapter_ranking_title"
+            />
+
+        <TextView
+            android:foreground="?android:selectableItemBackground"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_info"
+            android:padding="@dimen/_15sdp"
+            android:id="@+id/tv_info_btn"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:padding="@dimen/_10sdp"
+        android:id="@+id/tv_my_ranking_details"
+        android:background="@drawable/my_ranking_details_bg"
+        android:layout_width="match_parent"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:textSize="@dimen/_15sdp"
+        android:text="আপনার র‍্যাংকিং  :  ৬/১৫\nআপনার র‍্যাংকিং  :  ৬/১৫\nআপনার র‍্যাংকিং  :  ৬/১৫"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_divider"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:id="@+id/rv_ranking_list"
+        />
+
+</LinearLayout>

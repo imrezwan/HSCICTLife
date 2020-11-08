@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".fragments.mainpage.ToolsFragment">
+
+    <com.google.android.material.tabs.TabLayout
+        android:theme="@style/RegistrationTheme"
+        android:id="@+id/tablayout_tools"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_height="@dimen/_35sdp"
+        app:tabTextAppearance="@style/AuthTabStyle"
+        android:layout_marginHorizontal="@dimen/reg_content_margin"
+        app:tabIndicatorHeight="@dimen/_2sdp"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabSelectedTextColor="@color/colorWhite"
+        app:tabBackground="@drawable/auth_tab_color_selector"
+        app:tabTextColor="@color/colorGray">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_tools_cprogram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tools_program_text" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_tools_html"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tools_html_text"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:background="#EFF2F4"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:id="@+id/viewpager_tools_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.viewpager.widget.ViewPager>
+
+</LinearLayout>

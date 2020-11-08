@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="horizontal"
+    android:background="#B2E2E8"
+    android:foreground="?android:selectableItemBackground"
+    android:padding="@dimen/_3sdp"
+    android:layout_marginBottom="@dimen/_1sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/iv_question_set_count"
+        android:src="@drawable/ic_eight_star"
+        android:layout_margin="@dimen/_5sdp"
+        />
+
+    <LinearLayout
+        android:layout_weight="7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="প্রথম সেট প্রশ্ন"
+            android:textStyle="bold"
+            android:textSize="@dimen/_18sdp"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/tv_question_set_name"
+            />
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ProgressBar
+                android:layout_weight="13"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_8sdp"
+                android:progress="50"
+                android:requiresFadingEdge="horizontal"
+                android:indeterminate="false"
+                android:progressBackgroundTint="@color/colorProgressBg"
+                android:progressTint="@color/colorPrimary"
+                android:background="@color/colorProgressBg"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:id="@+id/pb_question_set_progress"
+                />
+
+            <TextView
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/colorPrimary"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:text="৪/২০"
+                android:id="@+id/tv_question_progress"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_how_many_times_study_text"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/tv_question_set_completed_count"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

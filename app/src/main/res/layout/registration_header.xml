@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@drawable/reg_sliding_tab_round_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Button
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:textStyle="bold"
+        android:background="@drawable/reg_sliding_each_tab_blank_bg"
+        android:textColor="@color/colorTextPrimary"
+        android:layout_height="wrap_content"
+        android:id="@+id/reg_sign_up_tab"
+        android:text="@string/reg_sign_up_tab"
+        android:textSize="@dimen/textSizeMedium"
+        android:fontFamily="@font/kalpurush"/>
+
+    <Button
+        android:textStyle="bold"
+        android:layout_weight="1"
+        android:textColor="@color/colorTextPrimary"
+        android:background="@drawable/reg_sliding_each_tab_blank_bg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/reg_login_tab"
+        android:text="@string/reg_login_tab_text"
+        android:textSize="@dimen/textSizeMedium"
+        android:fontFamily="@font/kalpurush"/>
+
+
+</LinearLayout>

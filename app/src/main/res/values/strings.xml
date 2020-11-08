@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">HSC ICT Life</string>
+    <string name="reg_login_tab_text">লগ ইন</string>
+    <string name="reg_sign_up_tab">সাইন আপ</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="registration_name_input_hint">আপনার নাম</string>
+    <string name="registration_college_name_input_hint">কলেজের নাম</string>
+    <string name="registration_password_input_hint">আপনার পাসওয়ার্ড</string>
+    <string name="registration_email_input_hint">আপনার ইমেইল</string>
+    <string name="mcq_title_text">বহুনির্বাচনি প্রশ্ন</string>
+    <string name="quiz_start_text">শুরু করুন</string>
+    <string name="mcq_guide_next_question">পরবর্তী প্রশ্ন</string>
+    <string name="quiz_exam_btn_text">কুইজ পরীক্ষা</string>
+    <string name="quiz_practice_btn_text">প্র্যাকটিস</string>
+    <string name="mcq_chapter_name">অধ্যায় ১ঃ বিকাস বহুনির্বাচনি প্রশ্ন বহুনির্বাচনি</string>
+    <string name="mcq_chapter_ranking_title">সেরা ৫০ জন</string>
+    <string name="tools_program_text">C Program</string>
+    <string name="tools_html_text">HTML</string>
+    <string name="hide_it_text">লুকান</string>
+    <string name="code_from_text">ছবি হতে কোড</string>
+    <string name="run_text">রান</string>
+    <string name="test_text">2 3\n3 4\n2 3\n3 4\n2 3\n3 4\n2 3\n3 4\n</string>
+    <string name="code_output_title_text">আউটপুট</string>
+    <string name="code_input_title_text">ইনপুট</string>
+    <string name="code_input_if_any_title_text">ইনপুট (যদি থাকে)</string>
+    <string name="more_privacy_policy_text">প্রাইভেসি পলিসি</string>
+    <string name="more_about_app_dev_text">অ্যাপ ডেভেলপার সম্পর্কে</string>
+    <string name="more_rating_text">রেটিং দিন</string>
+    <string name="more_give_opinion_text">মতামত দিন</string>
+    <string name="demo_how_many_times_study_text"><b>১ বার</b> সম্পূর্ণ পড়া শেষ করেছেন</string>
+    <string name="navigation_drawer_open">nav_open</string>
+    <string name="navigation_drawer_close">nav_close</string>
 </resources>

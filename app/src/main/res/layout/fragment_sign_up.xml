@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/reg_content_margin"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/_6sdp"
+    android:theme="@style/RegistrationTheme"
+    tools:context=".fragments.authpage.SignUpFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="@dimen/_10sdp"
+        android:id="@+id/name_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/registration_name_input_hint"
+            android:fontFamily="@font/kalpurush"
+            android:inputType="textPersonName"
+            android:drawableLeft="@drawable/ic_profile_name"
+            android:drawablePadding="@dimen/_15sdp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="@dimen/_10sdp"
+        android:id="@+id/college_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/registration_college_name_input_hint"
+            android:fontFamily="@font/kalpurush"
+            android:inputType="textPersonName"
+            android:drawableLeft="@drawable/ic_profile_name"
+            android:drawablePadding="@dimen/_15sdp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <include layout="@layout/login_layout"/>
+
+
+    <Button
+        android:text="@string/reg_sign_up_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_sign_up"
+        style="@style/AuthButtonStyle"
+        />
+
+
+</LinearLayout>

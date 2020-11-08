@@ -4,4 +4,21 @@
     <color name="colorPrimaryDark">#303349</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorTextPrimary">#363951</color>
+    <color name="colorTextWhite">#FFFFFF</color>
+    <color name="colorTextBlack">#1A1A1B</color>
+    <color name="colorGray">#474747</color>
+    <color name="colorSweetRed">#F44935</color>
+    <color name="colorSweetGreen">#4CAF50</color>
+    <color name="colorCodeLineNumber">#C9C9C9</color>
+    <color name="colorCodeEditor">#8B8FAC</color>
+    <color name="colorCodeOptionButton">#303349</color>
+    <color name="colorProgressBg">#9FA1AE</color>
+    <color name="colorDrawerQuestion">#31333E</color>
+    <color name="colorRepeatedQuestionInstructionBackground">#E8DECE</color>
+    <color name="colorRepeatedQuestionInstructionTopperText">#EFA842</color>
+    <color name="colorNewQuestionInstructionBackground">#EEDDDBDB</color>
+    <color name="colorNewQuestionInstructionTopperText">#EE393737</color>
+    <color name="colorMcqExplanation">#48AA4C</color>
+    <color name="colorMcqStateLayerBg">#F0F5F6</color>
 </resources>

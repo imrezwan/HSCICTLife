@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.AuthActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_registraion_logo"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_10sdp"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:theme="@style/RegistrationTheme"
+        android:id="@+id/tablayout_registration"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_height="@dimen/_35sdp"
+        app:tabTextAppearance="@style/AuthTabStyle"
+        android:layout_marginHorizontal="@dimen/reg_content_margin"
+        app:tabIndicatorHeight="@dimen/_2sdp"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabSelectedTextColor="@color/colorWhite"
+        app:tabBackground="@drawable/auth_tab_color_selector"
+        app:tabTextColor="@color/colorGray">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_auth_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reg_sign_up_tab" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_auth_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reg_login_tab_text"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:background="#EFF2F4"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:id="@+id/viewpager_registration_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.viewpager.widget.ViewPager>
+
+</LinearLayout>

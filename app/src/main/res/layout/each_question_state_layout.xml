@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:foreground="?android:selectableItemBackground"
+    android:id="@+id/ll_mcq_state_container_layout"
+    android:background="@drawable/current_mcq_state_bg"
+    android:layout_marginRight="@dimen/_1sdp"
+    android:padding="@dimen/_6sdp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_12sdp"
+        android:text="প্রশ্ন ১"
+        android:textStyle="bold"
+        android:id="@+id/tv_question_state_number"
+        android:textColor="@color/colorTextPrimary"
+        android:fontFamily="@font/kalpurush"
+        />
+
+    <ImageView
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_question_state_icon"
+        android:src="@drawable/ic_no_answer"
+        />
+
+
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/reg_sliding_each_tab_colored_bg"
+        android:state_selected="true"/>
+    <item android:drawable="@drawable/reg_sliding_each_tab_blank_bg"/>
+</selector>

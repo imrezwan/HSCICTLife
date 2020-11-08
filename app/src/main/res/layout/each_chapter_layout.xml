@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/ic_chapter_name_bg_frame"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/_5sdp"
+    android:layout_gravity="center_horizontal"
+    android:foreground="?android:selectableItemBackground"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="@dimen/_65sdp"
+        android:layout_height="@dimen/_65sdp"
+        android:src="@drawable/ic_chapter_3"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingTop="@dimen/_15sdp"
+        android:id="@+id/iv_chapter_icon"
+        />
+
+
+    <LinearLayout
+        android:padding="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/iv_chapter_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="অধ্যায় ১"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/colorTextPrimary"
+            android:id="@+id/tv_chapter_count_num"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginVertical="@dimen/_2sdp"
+            />
+
+        <TextView
+            android:id="@+id/tv_chapter_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/colorTextPrimary"
+            android:text="কমিউনিকেশন সিস্টেম ও নেটওয়ার্কিং"
+            />
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

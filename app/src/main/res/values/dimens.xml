@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSizeMedium">@dimen/_16sdp</dimen>
+    <dimen name="reg_content_margin">@dimen/_8sdp</dimen>
+    <dimen name="toolbar_text_title">@dimen/_14sdp</dimen>
+    <dimen name="contentPaddingForBottomNav">@dimen/_40sdp</dimen>
+</resources>

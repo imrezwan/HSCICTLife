@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.mainpage.MoreFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_10sdp"
+        >
+
+        <Button
+            android:id="@+id/btn_privacy_policy"
+            android:drawableLeft="@drawable/ic_privacy_policy"
+            android:text="@string/more_privacy_policy_text"
+            style="@style/MoreButtonTheme"
+            />
+
+        <Button
+            android:id="@+id/btn_about_app_developer"
+            android:drawableLeft="@drawable/ic_app_developer"
+            android:text="@string/more_about_app_dev_text"
+            style="@style/MoreButtonTheme"
+            />
+
+        <Button
+            android:id="@+id/btn_give_rating"
+            android:drawableLeft="@drawable/ic_rating_star"
+            android:text="@string/more_rating_text"
+            style="@style/MoreButtonTheme"
+            />
+
+        <Button
+            android:id="@+id/btn_give_opinion"
+            android:drawableLeft="@drawable/ic_give_opinion"
+            android:text="@string/more_give_opinion_text"
+            style="@style/MoreButtonTheme"
+            />
+
+    </LinearLayout>
+</ScrollView>

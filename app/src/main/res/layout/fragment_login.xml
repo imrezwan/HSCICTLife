@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/_6sdp"
+    android:theme="@style/RegistrationTheme"
+    tools:context=".fragments.authpage.LoginFragment">
+
+    <include layout="@layout/login_layout"/>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/AuthButtonStyle"
+        android:text="@string/reg_login_tab_text"
+        />
+
+</LinearLayout>

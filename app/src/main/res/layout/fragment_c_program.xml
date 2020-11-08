@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_code_editor"/>
+
+
+        <LinearLayout
+            android:paddingBottom="@dimen/_40sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/colorSweetGreen"
+                android:textSize="@dimen/_14sdp"
+                android:padding="@dimen/_6sdp"
+                android:text="@string/code_input_if_any_title_text"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#777880"
+                android:textColor="@color/colorWhite"
+                android:text="2 3"
+                android:id="@+id/et_cprogram_input"
+                android:inputType="text"
+                android:textStyle="bold"
+                android:fontFamily="@font/firacode"
+                android:padding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/colorSweetGreen"
+                android:textSize="@dimen/_14sdp"
+                android:padding="@dimen/_6sdp"
+                android:text="@string/code_output_title_text"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#777880"
+                android:id="@+id/tv_cprogram_output"
+                android:textColor="@color/colorWhite"
+                android:text="@string/test_text"
+                android:inputType="text"
+                android:textStyle="bold"
+                android:fontFamily="@font/firacode"
+                android:padding="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

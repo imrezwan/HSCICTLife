@@ -12,29 +12,56 @@
         <include layout="@layout/layout_code_editor"/>
 
 
-        <LinearLayout
-            android:paddingBottom="@dimen/_40sdp"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="@color/colorSweetGreen"
-                android:textSize="@dimen/_14sdp"
-                android:padding="@dimen/_6sdp"
-                android:text="@string/code_output_title_text"
-                />
-
-            <WebView
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingBottom="@dimen/_40sdp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/webview_html_code_output"/>
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="#EF9073"
+                    android:textSize="@dimen/_7sdp"
+                    android:paddingHorizontal="@dimen/_7sdp"
+                    android:paddingVertical="@dimen/_3sdp"
+                    android:text="@string/html_code_instruction_text"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorSweetGreen"
+                    android:textSize="@dimen/_12sdp"
+                    android:padding="@dimen/_6sdp"
+                    android:text="@string/code_output_title_text"
+                    />
+
+                <WebView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/webview_html_code_output"/>
 
 
-        </LinearLayout>
+            </LinearLayout>
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/pb_code_in_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:foregroundTint="@color/colorPrimary"
+                android:indeterminate="true"
+                android:progressTint="#EEA32424"
+                android:indeterminateTint="@color/colorPrimary"
+                />
+        </RelativeLayout>
 
 
 

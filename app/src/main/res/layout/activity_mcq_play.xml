@@ -354,49 +354,7 @@
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:orientation="vertical">
-                   <LinearLayout
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:orientation="horizontal">
 
-                       <TextView
-                           android:foreground="?android:selectableItemBackground"
-                           android:id="@+id/tv_mcq_practice_next_set_question"
-                           android:layout_marginHorizontal="@dimen/_10sdp"
-                           android:layout_alignParentBottom="true"
-                           android:layout_centerHorizontal="true"
-                           android:textSize="@dimen/_12sdp"
-                           android:textStyle="bold"
-                           android:textColor="@color/colorPrimary"
-                           android:drawableLeft="@drawable/ic_navigate_prev"
-                           android:fontFamily="@font/kalpurush"
-                           android:layout_width="0dp"
-                           android:layout_weight="1"
-                           android:gravity="center_vertical"
-                           android:layout_height="wrap_content"
-                           android:text="আগের সেট প্রশ্ন"/>
-
-                       <TextView
-                           android:foreground="?android:selectableItemBackground"
-                           android:id="@+id/tv_mcq_practice_prev_set_question"
-                           android:layout_marginHorizontal="@dimen/_10sdp"
-                           android:layout_alignParentBottom="true"
-                           android:layout_centerHorizontal="true"
-                           android:textSize="@dimen/_12sdp"
-                           android:textStyle="bold"
-                           android:fontFamily="@font/kalpurush"
-                           android:layout_width="0dp"
-                           android:layout_weight="1"
-                           android:textColor="@color/colorPrimary"
-                           android:layout_height="wrap_content"
-                           android:text="পরবর্তী সেট প্রশ্ন"
-                           android:drawableRight="@drawable/ic_navigate_next"
-                           android:gravity="end|center_vertical"
-                           android:layout_gravity="end"/>
-
-
-
-                   </LinearLayout>
 
                    <LinearLayout
                        android:padding="@dimen/_6sdp"
@@ -404,6 +362,49 @@
                        android:orientation="vertical"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="horizontal">
+
+                           <TextView
+                               android:foreground="?android:selectableItemBackground"
+                               android:id="@+id/tv_mcq_practice_next_set_question"
+                               android:layout_marginHorizontal="@dimen/_10sdp"
+                               android:layout_alignParentBottom="true"
+                               android:layout_centerHorizontal="true"
+                               android:textSize="@dimen/_12sdp"
+                               android:textStyle="bold"
+                               android:textColor="@color/colorPrimary"
+                               android:drawableLeft="@drawable/ic_navigate_prev"
+                               android:fontFamily="@font/kalpurush"
+                               android:layout_width="0dp"
+                               android:layout_weight="1"
+                               android:gravity="center_vertical"
+                               android:layout_height="wrap_content"
+                               android:text="আগের সেট প্রশ্ন"/>
+
+                           <TextView
+                               android:foreground="?android:selectableItemBackground"
+                               android:id="@+id/tv_mcq_practice_prev_set_question"
+                               android:layout_marginHorizontal="@dimen/_10sdp"
+                               android:layout_alignParentBottom="true"
+                               android:layout_centerHorizontal="true"
+                               android:textSize="@dimen/_12sdp"
+                               android:textStyle="bold"
+                               android:fontFamily="@font/kalpurush"
+                               android:layout_width="0dp"
+                               android:layout_weight="1"
+                               android:textColor="@color/colorPrimary"
+                               android:layout_height="wrap_content"
+                               android:text="পরবর্তী সেট প্রশ্ন"
+                               android:drawableRight="@drawable/ic_navigate_next"
+                               android:gravity="end|center_vertical"
+                               android:layout_gravity="end"/>
+
+
+
+                       </LinearLayout>
 
                        <TextView
                            android:layout_width="match_parent"

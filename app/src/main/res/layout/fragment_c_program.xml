@@ -11,57 +11,91 @@
 
         <include layout="@layout/layout_code_editor"/>
 
-
-        <LinearLayout
-            android:paddingBottom="@dimen/_40sdp"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            >
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/ll_bottom_part_compiler"
+                android:paddingBottom="@dimen/_35sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="@color/colorSweetGreen"
-                android:textSize="@dimen/_14sdp"
-                android:padding="@dimen/_6sdp"
-                android:text="@string/code_input_if_any_title_text"
-                />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#777880"
-                android:textColor="@color/colorWhite"
-                android:text="2 3"
-                android:id="@+id/et_cprogram_input"
-                android:inputType="text"
-                android:textStyle="bold"
-                android:fontFamily="@font/firacode"
-                android:padding="@dimen/_8sdp"
-                android:layout_marginHorizontal="@dimen/_10sdp"/>
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="#EF9073"
+                    android:textSize="@dimen/_7sdp"
+                    android:paddingHorizontal="@dimen/_7sdp"
+                    android:paddingVertical="@dimen/_3sdp"
+                    android:text="@string/c_code_instruction_text"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorSweetGreen"
+                    android:textSize="@dimen/_11sdp"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:text="@string/code_input_if_any_title_text"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#777880"
+                    android:textColor="@color/colorWhite"
+                    android:text=""
+                    android:hint="Input here"
+                    android:textColorHint="#D0D1D0"
+                    android:id="@+id/et_cprogram_input"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_11sdp"
+                    android:fontFamily="@font/firacode"
+                    android:padding="@dimen/_6sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorSweetGreen"
+                    android:textSize="@dimen/_11sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:text="@string/code_output_title_text"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#777880"
+                    android:id="@+id/tv_cprogram_output"
+                    android:textColor="@color/colorWhite"
+                    android:text=""
+                    android:textStyle="bold"
+                    android:fontFamily="@font/firacode"
+                    android:padding="@dimen/_8sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"/>
+            </LinearLayout>
+
+
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/pb_code_in_progress"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="@color/colorSweetGreen"
-                android:textSize="@dimen/_14sdp"
-                android:padding="@dimen/_6sdp"
-                android:text="@string/code_output_title_text"
+                android:layout_centerInParent="true"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:foregroundTint="@color/colorPrimary"
+                android:indeterminate="true"
+                android:progressTint="#EEA32424"
+                android:indeterminateTint="@color/colorPrimary"
                 />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#777880"
-                android:id="@+id/tv_cprogram_output"
-                android:textColor="@color/colorWhite"
-                android:text="@string/test_text"
-                android:inputType="text"
-                android:textStyle="bold"
-                android:fontFamily="@font/firacode"
-                android:padding="@dimen/_8sdp"
-                android:layout_marginHorizontal="@dimen/_10sdp"/>
-        </LinearLayout>
+        </RelativeLayout>
 
 
     </LinearLayout>

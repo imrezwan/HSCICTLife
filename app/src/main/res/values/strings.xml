@@ -18,8 +18,8 @@
     <string name="tools_html_text">HTML</string>
     <string name="hide_it_text">লুকান</string>
     <string name="code_from_text">ছবি হতে কোড</string>
-    <string name="run_text">রান</string>
-    <string name="test_text">2 3\n3 4\n2 3\n3 4\n2 3\n3 4\n2 3\n3 4\n</string>
+    <string name="run_text">রান করুন</string>
+    <string name="test_text"></string>
     <string name="code_output_title_text">আউটপুট</string>
     <string name="code_input_title_text">ইনপুট</string>
     <string name="code_input_if_any_title_text">ইনপুট (যদি থাকে)</string>
@@ -36,4 +36,6 @@
     <string name="quiz_start_dialog_user_time_text">সময়: </string>
     <string name="quiz_start_dialog_user_time_unit_text">মিনিট</string>
     <string name="quiz_start_dialog_user_total_unit_text">টি</string>
+    <string name="c_code_instruction_text">* সি কোড রান করতে ইন্টারনেট সংযোগ প্রয়োজন  <br/>* ছবি থেকে কোড করার জন্য শুধুমাত্র প্রথমবার ইন্টারনেটের প্রয়োজন</string>
+    <string name="html_code_instruction_text">*ছবি থেকে কোড করার জন্য শুধুমাত্র প্রথমবার ইন্টারনেটের প্রয়োজন</string>
 </resources>

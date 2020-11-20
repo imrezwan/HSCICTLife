@@ -14,6 +14,16 @@ public class Constants {
     public static final String WRONG_ANSWER = "ভুল উত্তর";
     public static final String THIS_QUESTION_WILL_BE_ASKED_AGAIN = "প্রশ্নটি আবার করা হবে";
     public static final String MCQ_EXAM_TOOLBAR_TITLE = "বহুনির্বাচনী পরীক্ষা";
+    public static final String PLEASE_SELECT_CHAPTER = "আপনি কোন অধ্যায়ই পছন্দ করেন নি, অনুগ্রহ করে অধ্যায় পছন্দ করুন";
+    public static final int PER_CHAPTER_QUESTIONS = 150;
+    public static final String EXTRA_CHAPTER_NUMBER = "chapter_number";
+    public static final String EXTRA_CHAPTER_MCQ_SETS_TOTAL = "chapter_total_mcq_set";
+    public static final String EXTRA_MCQ_SET_NUMBER = "mcq_set_number";
+    public static final String EXTRA_CHAPTER_NUMBER_LIST = "chapter_number_list";
+    public static final String EXTRA_EXAM_MCQ_TOTAL = "mcq_exam_total";
+    public static final String EXTRA_EXAM_MCQ_TIME = "mcq_exam_time";
+    public static final String EXTRA_EXAM_CURRECT_ANSWER = "mcq_currect_answer";
+    public static final String EXTRA_EXAM_TOTAL_ANSWERED = "mcq_total_answered";
     public static String ML_RECOG_ERR = "ছবি থেকে কোড প্রথমবার বের করার জন্য ইন্টারনেটের প্রয়োজন হয়, অনুগ্রহ করে ইন্টারনেট সংযোগ চালু করে আবার চেষ্টা করুন";
 
     public static final String MCQ_SET_HOW_MANY = " সম্পূর্ণ পড়া শেষ করেছেন";

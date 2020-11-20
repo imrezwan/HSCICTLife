@@ -10,37 +10,56 @@
     <LinearLayout
         android:background="@drawable/quiz_top_bg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_50sdp"
         android:orientation="horizontal"
         >
 
         <TextView
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_back"
             android:padding="@dimen/_15sdp"
             android:id="@+id/tv_back_btn"/>
 
         <TextView
-            android:layout_weight="4"
+            android:paddingHorizontal="@dimen/_10sdp"
             android:layout_width="0dp"
+            android:layout_weight="2"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/_18sdp"
             android:textStyle="bold"
             android:textColor="@color/colorTextPrimary"
             android:text="@string/mcq_title_text"
             />
 
         <TextView
+            android:visibility="gone"
             android:foreground="?android:selectableItemBackground"
             android:layout_weight="1"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_info"
             android:padding="@dimen/_15sdp"
             android:id="@+id/tv_info_btn"/>
+
+        <Button
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/quiz_start_text"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:textStyle="bold"
+            android:drawableRight="@drawable/ic_start_right_arrow"
+            android:foreground="?selectableItemBackground"
+            android:paddingVertical="@dimen/_3sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:id="@+id/btn_start_quiz_exam"
+            />
 
 
     </LinearLayout>

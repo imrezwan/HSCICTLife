@@ -25,7 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
         initBottomNavigationBar();
         // selectedFragment = new HomeFragment();
-        navigation.setSelectedItemId(R.id.nav_home);
+        navigation.setSelectedItemId(R.id.nav_quiz);
+
+        setExperimentCompilerAPI();
+    }
+
+    private void setExperimentCompilerAPI() {
+
     }
 
     private void initBottomNavigationBar() {
@@ -46,18 +52,18 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment;
                 switch (item.getItemId()) {
-                    case R.id.nav_home:
+                /*    case R.id.nav_home:
                         fragment = new HomeFragment();
                         loadFragment(fragment);
-                        return true;
+                        return true;*/
                     case R.id.nav_quiz:
                         fragment = new QuizFragment();
                         loadFragment(fragment);
                         return true;
-                    case R.id.nav_ranking:
+                   /* case R.id.nav_ranking:
                         fragment = new RankingFragment();
                         loadFragment(fragment);
-                        return true;
+                        return true;*/
                     case R.id.nav_more:
                         fragment = new MoreFragment();
                         loadFragment(fragment);

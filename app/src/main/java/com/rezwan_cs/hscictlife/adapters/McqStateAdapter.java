@@ -16,7 +16,6 @@ import com.rezwan_cs.hscictlife.R;
 import com.rezwan_cs.hscictlife.commons.LanguageChangeHelper;
 import com.rezwan_cs.hscictlife.modelclasses.ExamMcqModel;
 import com.rezwan_cs.hscictlife.interfaces.IMcqModel;
-import com.rezwan_cs.hscictlife.modelclasses.McqState;
 
 import java.util.ArrayList;
 
@@ -39,7 +38,7 @@ public class McqStateAdapter extends
         void mcqNumberClicked(int pos);
     }
 
-    public void changeMcqState(int pos, McqState mcqState){
+    public void changeMcqState(int pos, ExamMcqModel.STATE mcqState){
         if(mcqStateArrayList.get(pos) instanceof ExamMcqModel){
             ((ExamMcqModel)mcqStateArrayList.get(pos)).setMcqState(mcqState);
         }
@@ -112,14 +111,14 @@ public class McqStateAdapter extends
             }
         }
 
-        private void setUpStateIcon(McqState state) {
-            if(state.getState() == McqState.STATE.UNANSWERED){
+        private void setUpStateIcon(ExamMcqModel.STATE state) {
+            if(state == ExamMcqModel.STATE.UNANSWERED){
                 mEachMcqStateIcon.setImageResource(R.drawable.ic_no_answer);
             }
-            else if(state.getState() == McqState.STATE.CURRECT){
+            else if(state == ExamMcqModel.STATE.CURRECT){
                 mEachMcqStateIcon.setImageResource(R.drawable.ic_correct_answer);
             }
-            else if(state.getState() == McqState.STATE.WRONG){
+            else if(state == ExamMcqModel.STATE.WRONG){
                 mEachMcqStateIcon.setImageResource(R.drawable.ic_incorrect_answer);
             }
 

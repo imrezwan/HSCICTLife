@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
@@ -23,11 +24,17 @@ import android.widget.Toast;
 import com.rezwan_cs.hscictlife.R;
 import com.rezwan_cs.hscictlife.adapters.McqNavigationAdapter;
 import com.rezwan_cs.hscictlife.commons.Constants;
+import com.rezwan_cs.hscictlife.commons.LanguageChangeHelper;
 import com.rezwan_cs.hscictlife.commons.ProgressHelper;
+import com.rezwan_cs.hscictlife.fragments.mainpage.QuizFragment;
 import com.rezwan_cs.hscictlife.interfaces.IMcqModel;
+import com.rezwan_cs.hscictlife.modelclasses.McqModel;
 import com.rezwan_cs.hscictlife.modelclasses.PracticeMcqModel;
+import com.rezwan_cs.hscictlife.repositories.FirestoreRepository;
+import com.rezwan_cs.hscictlife.utilities.ChapterNames;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class McqPracticePlayActivity extends AppCompatActivity implements View.OnClickListener {
     private final String TAG = "TAG_McqPracticePlay";
@@ -59,20 +66,74 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
     long totalQuestion = 0, answeredQuestion = 0;
     PracticeMcqModel currentQuestion;
 
+    //
+    int chapterNumbr = 1, mcqSetNumber = 1;
+    TextView mNextSetQues, mPrevSetQues, mToolbarTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mcq_play);
         findViews();
-        setUpToolbar();
+        retriveDataFromPreviousActivity();
+        setUpToolbarTitle();
         getMcqDataReady();
+        setAllListeners();
+        setChangeWork();
 
+    }
+
+    private void setChangeWork() {
+        mPrevSetQues.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToMcqPracticePlay(mcqSetNumber-1);
+            }
+        });
+
+        mNextSetQues.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToMcqPracticePlay(mcqSetNumber+1);
+            }
+        });
+    }
+
+    private void goToMcqPracticePlay(int mcqSetNumber) {
+        if(mcqSetNumber<0){
+            Toast.makeText(this, "আগের কোন প্রশ্ন সেট নেই এই অধ্যয়ের জন্য ", Toast.LENGTH_LONG).show();
+        }
+        else if(QuizFragment.getChapterMcqSetTotal(chapterNumbr) <= mcqSetNumber){
+            Toast.makeText(this, "পরবর্তী কোন প্রশ্ন সেট নেই এই অধ্যয়ের জন্য ", Toast.LENGTH_LONG).show();
+        }
+        else{
+            Intent intent = new Intent(this, McqPracticePlayActivity.class);
+            intent.putExtra(Constants.EXTRA_MCQ_SET_NUMBER, mcqSetNumber);
+            intent.putExtra(Constants.EXTRA_CHAPTER_NUMBER, chapterNumbr);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        }
+    }
+
+    private void retriveDataFromPreviousActivity() {
+        if(getIntent()!=null){
+            chapterNumbr = getIntent().getIntExtra(Constants.EXTRA_CHAPTER_NUMBER , 1);
+            mcqSetNumber = getIntent().getIntExtra(Constants.EXTRA_MCQ_SET_NUMBER, 1);
+        }
+
+    }
+
+    private void setUpToolbarTitle(){
+        mToolbarTitle.setText(LanguageChangeHelper.getRankingTextFromNumber(chapterNumbr)+" অধ্যায় : সেট "+
+                LanguageChangeHelper.englishToBanglaNumber(mcqSetNumber+""));
+    }
+
+    private void setUpFirstTimeQuestionWork() {
         totalQuestion = allQuestionArrayList.size();
         newQuestionArrayList.addAll(allQuestionArrayList);
         setDrawerLayout();
         setUpNextQuestion();
-        setAllListeners();
-
     }
 
     private void setAllListeners() {
@@ -84,27 +145,22 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
     }
 
     private void getMcqDataReady() {
-        allQuestionArrayList.add(new PracticeMcqModel("What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allQuestionArrayList.add(new PracticeMcqModel("What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allQuestionArrayList.add(new PracticeMcqModel("What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allQuestionArrayList.add(new PracticeMcqModel("What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allQuestionArrayList.add(new PracticeMcqModel("What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allQuestionArrayList.add(new PracticeMcqModel("What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allQuestionArrayList.add(new PracticeMcqModel("What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
+        FirestoreRepository firestoreRepository = new FirestoreRepository();
+        firestoreRepository.getPracticeQuizdata(chapterNumbr, mcqSetNumber);
+        firestoreRepository.setUpPracticeRepository(new FirestoreRepository.OnPracticeFirestoreRepository() {
+            @Override
+            public void quizListPracticeDataAdded(List<PracticeMcqModel> quizListModelList) {
+                Log.d("DATA", quizListModelList.get(0).toString());
+                allQuestionArrayList.addAll(quizListModelList);
+                setUpFirstTimeQuestionWork();
+            }
+
+            @Override
+            public void onError(Exception e) {
+                Log.d("DATA", e.getMessage());
+            }
+        });
+
 
 
     }
@@ -147,13 +203,18 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
         mOption2Txt= (TextView) mOption2Linear.getChildAt(1);
         mOption3Txt= (TextView) mOption3Linear.getChildAt(1);
         mOption4Txt= (TextView) mOption4Linear.getChildAt(1);
+
+        //
+        mNextSetQues = findViewById(R.id.tv_mcq_practice_next_set_question);
+        mPrevSetQues = findViewById(R.id.tv_mcq_practice_prev_set_question);
+        mToolbarTitle = findViewById(R.id.tv_toolbar_title);
     }
 
-    private void setUpToolbar() {
+ /*   private void setUpToolbar() {
         toolbar.setTitle("");
         mToolbarTitleTxt.setText(Constants.MCQ_PRACTICE_TOOLBAR_TITLE);
         setSupportActionBar(toolbar);
-    }
+    }*/
 
     private void setDrawerLayout() {
 
@@ -327,19 +388,16 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
         mNextQuestionSectionLinear.startAnimation(animation);
     }
 
-
-    private void showExplanation() {
+  /*  private void showExplanation() {
         if(!currentQuestion.getExplanation().isEmpty()){
             mExplanationTxt.setVisibility(View.VISIBLE);
             mExplanationTxt.setText("ব্যাখ্যাঃ "+currentQuestion.getExplanation());
         }
-    }
+    }*/
 
     private void hideExplanation(){
         mExplanationTxt.setVisibility(View.GONE);
     }
-
-
 
     @Override
     public void onClick(View v) {
@@ -373,7 +431,7 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
     private void valueChangeAccordingly(int i) {
         long selectedAnswer = 1;
         Log.d(TAG, "TOP: "+i);
-        showExplanation();
+        //showExplanation();
         if(i==1){
             selectedAnswer = 1;
             setUpSingleOptionMarkerWrongInitially(mOption1CircleMaker, mOption1Txt);
@@ -396,11 +454,9 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
         }
 
         setUpTheCurrectAnswerColor();
-
         makeMcqDataCircularDependingOnAnswerIsCurrectOrNot(selectedAnswer);
 
-
-        showExplanation();
+        //showExplanation();
         showNextQuestionButton();
         disableMcqOptionsClick();
     }
@@ -427,6 +483,7 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
             mPracticePlayInstructionTxt.setText(Constants.THIS_QUESTION_WONT_BE_ASKED_AGAIN);
             mNewQuestionOrNotFlagTxt.setText(Constants.CORRECT_ANSWER);
             setUpNewQuestionTopSectionColor();
+            setUpRemainingQuestionCount();
 
         }
         else{
@@ -446,6 +503,7 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
             mPracticePlayInstructionTxt.setText(Constants.THIS_QUESTION_WILL_BE_ASKED_AGAIN);
             mNewQuestionOrNotFlagTxt.setText(Constants.WRONG_ANSWER);
             setUpOldQuestionTopInstructionSection();
+
         }
     }
 

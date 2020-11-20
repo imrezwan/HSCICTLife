@@ -8,8 +8,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -27,10 +29,10 @@ import com.rezwan_cs.hscictlife.commons.Constants;
 import com.rezwan_cs.hscictlife.commons.ProgressHelper;
 import com.rezwan_cs.hscictlife.modelclasses.ExamMcqModel;
 import com.rezwan_cs.hscictlife.interfaces.IMcqModel;
-import com.rezwan_cs.hscictlife.modelclasses.McqState;
-import com.rezwan_cs.hscictlife.modelclasses.PracticeMcqModel;
+import com.rezwan_cs.hscictlife.repositories.FirestoreRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class McqExamPlayActivity extends AppCompatActivity implements View.OnClickListener {
     private final String TAG = "TAG_McqExamPlayActivity";
@@ -39,6 +41,7 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     McqStateAdapter mcqStateAdapter;
     LinearLayoutManager mcqStateLayoutManager;
     ArrayList<IMcqModel> allMcqArrayList = new ArrayList<>();
+    ArrayList<Integer> examChapterList = new ArrayList<>();
 
     //layout variables
     TextView mPracticeQuestionTxt, mExplanationTxt, mRemainingQuestionTxt;
@@ -59,9 +62,14 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     McqNavigationAdapter mcqNavigationAdapter;
 
     //mcq play live info variable
-    long totalQuestion = 0, answeredQuestion = 0, currentPos = 0;
+    long totalQuestion = 0, answeredQuestion = 0, currentPos = 0, currectAnswer = 0;
     ExamMcqModel currentQuestion;
 
+    int mcqTotal = 15, mcqTime = 15;
+    TextView mTimerText;
+    Button mEndExamBtn;
+    String timeTxt = "";
+    CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +77,74 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_mcq_exam_play);
         findViews();
         setUpToolbar();
+        retriveDataFromPreviousActivity();
         readyMcqStateDataInitialization();
+        setUpExamEndBtn();
+    }
+
+    private void setUpExamEndBtn() {
+        mEndExamBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToMcqExamResultPage();
+            }
+        });
+    }
+
+    private void setUpExamMcq() {
         setUpMcqStateRecycler();
         setDrawerLayout();
         totalQuestion = allMcqArrayList.size();
         setUpSingleQuestion(currentPos);
         setAllListeners();
+        setUpRemainingQuestionCount();
+        startTimerCountdown(mcqTime);
+    }
+
+    private void retriveDataFromPreviousActivity() {
+        if(getIntent()!=null){
+            examChapterList = getIntent().getIntegerArrayListExtra(Constants.EXTRA_CHAPTER_NUMBER_LIST);
+            mcqTotal = getIntent().getIntExtra(Constants.EXTRA_EXAM_MCQ_TOTAL, 15);
+            mcqTime = getIntent().getIntExtra(Constants.EXTRA_EXAM_MCQ_TIME, 15);
+
+        }
+    }
+
+    private void startTimerCountdown(final long timeMinutes) {
+        countDownTimer = new CountDownTimer( timeMinutes*60*1000+1000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeTxt = getTimerString(millisUntilFinished);
+                mTimerText.setText(timeTxt);
+                Log.d(TAG, "TESTPAPRE COUNT: "+ getTimerString(millisUntilFinished));
+            }
+            @Override
+            public void onFinish() {
+                mTimerText.setText("সময় শেষ");
+                goToMcqExamResultPage();
+            }
+        }.start();
+    }
+
+    private void goToMcqExamResultPage() {
+        Intent intent = new Intent(this, McqExamResultActivity.class);
+        intent.putExtra(Constants.EXTRA_CHAPTER_NUMBER_LIST, examChapterList);
+        intent.putExtra(Constants.EXTRA_EXAM_MCQ_TIME, timeTxt);
+        intent.putExtra(Constants.EXTRA_EXAM_MCQ_TOTAL, totalQuestion);
+        calculateCorrectAnswer();
+        intent.putExtra(Constants.EXTRA_EXAM_CURRECT_ANSWER, currectAnswer);
+        intent.putExtra(Constants.EXTRA_EXAM_TOTAL_ANSWERED, answeredQuestion);
+        startActivity(intent);
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+    }
+
+
+    public static String getTimerString(long millisUntilFinished) {
+        int seconds = (int) (millisUntilFinished / 1000);
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+        return String.format("%02d", minutes)
+                + ":" + String.format("%02d", seconds);
     }
 
     private void setUpMcqStateRecycler() {
@@ -97,8 +167,29 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void readyMcqStateDataInitialization() {
+        FirestoreRepository firestoreRepository = new FirestoreRepository();
 
-        allMcqArrayList.add(new ExamMcqModel("1.What's your name?", "Pranto",
+        firestoreRepository.setUpExamRepository(new FirestoreRepository.OnExamFirestoreRepository() {
+
+            @Override
+            public void quizListExamDataAdded(List<ExamMcqModel> quizListModelList) {
+                for (int i = 0;i<quizListModelList.size();i++){
+                    ExamMcqModel mcqModel = quizListModelList.get(i);
+                    mcqModel.setMcqState(ExamMcqModel.STATE.UNANSWERED);
+                    allMcqArrayList.add(mcqModel);
+                }
+                setUpExamMcq();
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
+
+        firestoreRepository.getExamQuizdata(mcqTotal, examChapterList);
+
+       /*allMcqArrayList.add(new ExamMcqModel("1.What's your name?", "Pranto",
                 "Rka", "ridi", "ohao",
                 1,1, 1));
         allMcqArrayList.add(new ExamMcqModel("2.What's your name?", "Pranto",
@@ -129,6 +220,16 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
                 "Rka", "ridi", "ohao",
                 1,1, 1));
 
+        setUpExamMcq();*/
+    }
+
+    private long calculateCorrectAnswer(){
+        for(int i =0;i<allMcqArrayList.size();i++){
+            if(((ExamMcqModel)allMcqArrayList.get(i)).getMcqState() == ExamMcqModel.STATE.CURRECT){
+                currectAnswer++;
+            }
+        }
+        return currectAnswer;
     }
 
     private void findViews() {
@@ -169,6 +270,10 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
         mOption2Txt= (TextView) mOption2Linear.getChildAt(1);
         mOption3Txt= (TextView) mOption3Linear.getChildAt(1);
         mOption4Txt= (TextView) mOption4Linear.getChildAt(1);
+
+        ///
+        mTimerText = findViewById(R.id.tv_mcq_exam_time);
+        mEndExamBtn = findViewById(R.id.btn_mcq_exam_finish);
     }
 
     private void setUpToolbar() {
@@ -221,7 +326,8 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
             setUpAllOptionText();
         }
         else{
-            Toast.makeText(this, "Question sesh", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "সকল প্রশ্নের উত্তর করা শেষ", Toast.LENGTH_LONG).show();
+            goToMcqExamResultPage();
         }
         //setUpRemainingQuestionCount();
         setUpQuestionTextChangeAnimation();
@@ -230,8 +336,8 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void setHowManyAnswered() {
-        McqState.STATE state = currentQuestion.getMcqState().getState();
-        if(state != McqState.STATE.UNANSWERED){
+        ExamMcqModel.STATE state = currentQuestion.getMcqState();
+        if(state != ExamMcqModel.STATE.UNANSWERED){
             answeredQuestion++;
         }
     }
@@ -244,7 +350,8 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void clickabililityChecker() {
-        if(currentQuestion.getMcqState().getState() == McqState.STATE.UNANSWERED){
+        Log.d(TAG, "ANS: "+currentQuestion.getMcqState()+"  QUES: "+ currentQuestion.getQuestion());
+        if(currentQuestion.getMcqState() == ExamMcqModel.STATE.UNANSWERED){
             enableMcqOptionsClick();
         }
         else{
@@ -282,12 +389,13 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void setUpSingleOptionEverything(TextView circleMaker, TextView optionText) {
-        McqState.STATE currentState = currentQuestion.getMcqState().getState();
+        Log.d(TAG, currentQuestion.toString());
+        ExamMcqModel.STATE currentState = currentQuestion.getMcqState();
 
-        if(currentState == McqState.STATE.CURRECT){
+        if(currentState == ExamMcqModel.STATE.CURRECT){
             setUpTheCurrectAnswerColor();
         }
-        else if(currentState == McqState.STATE.WRONG){
+        else if(currentState == ExamMcqModel.STATE.WRONG){
             setUpTheCurrectAnswerColor();
             setUpTheWrongAnswerColor(currentQuestion.getAnswered());
         }
@@ -394,7 +502,7 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
         mcqStateAdapter.changeMcqState((int)currentPos,item.getMcqState());
 
         Log.d(TAG, "STATE: "+((ExamMcqModel)allMcqArrayList
-                .get((int)currentPos)).getMcqState().getState()+"");
+                .get((int)currentPos)).getMcqState()+"");
 
         if(i==1){
             setUpSingleOptionWrongColor(mOption1CircleMaker, mOption1Txt);

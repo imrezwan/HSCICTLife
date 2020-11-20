@@ -26,6 +26,12 @@ public class McqSetAdapter extends
         RecyclerView.Adapter<McqSetAdapter.MyMcqSetViewHolder> {
     Context context;
     ArrayList<McqSetModel> mcqSetAdapterArrayList ;
+    int chapterMcqSetTotal ;
+    IOnMcqSetClicked onMcqSetClicked;
+
+    public interface IOnMcqSetClicked{
+        void onMcqSetClicked(int mcqSetNumber);
+    }
 
     int[] iconList = {
             R.drawable.ic_one_star,
@@ -35,14 +41,15 @@ public class McqSetAdapter extends
             R.drawable.ic_five_star,
             R.drawable.ic_six_star,
             R.drawable.ic_seven_star,
-            R.drawable.ic_eight_star,
-            R.drawable.ic_nine_star,
-            R.drawable.ic_ten_star,
+            R.drawable.ic_eight_star
     };
 
-    public McqSetAdapter(Context context, ArrayList<McqSetModel> mcqSetAdapterArrayList) {
+    public McqSetAdapter(Context context, ArrayList<McqSetModel> mcqSetAdapterArrayList, int chapterMcqSetTotal,
+                         IOnMcqSetClicked onMcqSetClicked) {
         this.context = context;
         this.mcqSetAdapterArrayList = mcqSetAdapterArrayList;
+        this.chapterMcqSetTotal = chapterMcqSetTotal;
+        this.onMcqSetClicked = onMcqSetClicked;
     }
 
     @NonNull
@@ -56,13 +63,13 @@ public class McqSetAdapter extends
 
     @Override
     public void onBindViewHolder(@NonNull MyMcqSetViewHolder holder, int position) {
-        holder.bind(mcqSetAdapterArrayList.get(position), position);
+        holder.bind(position);
     }
 
 
     @Override
     public int getItemCount() {
-        return mcqSetAdapterArrayList.size();
+        return chapterMcqSetTotal;
     }
 
     public class MyMcqSetViewHolder extends RecyclerView.ViewHolder{
@@ -80,26 +87,31 @@ public class McqSetAdapter extends
 
         }
 
-        public void bind(final McqSetModel item, final int position) {
-
+        public void bind(final int position) {
+            McqSetModel item = position<mcqSetAdapterArrayList.size()?mcqSetAdapterArrayList.get(position):
+                    new McqSetModel(20, 0, 0);
             mEachMcqSetNameTxt.setText(LanguageChangeHelper.getMcqSetName(position+1));
 
+            long doneMcq = item != null?item.getDoneMcq():0;
+            long totalMcq =  item != null? item.getTotalMcq():20;
+            long completed = item != null? item.getHowManyTimesRead():0;
+
             mEachSetCompletedCountTxt.setText(Html.fromHtml(
-                    ProgressHelper.getHowManyTimesMcqSetRead(item.getHowManyTimesRead())));
+                    ProgressHelper.getHowManyTimesMcqSetRead(completed)));
             mEachMcqSetProgressTxt.setText(
                     ProgressHelper.getMcqSetProgressText(
-                            item.getDoneMcq(),item.getTotalMcq()));
+                            doneMcq,totalMcq));
 
             mEachMcqSetProgressBar.setProgress(
-                    ProgressHelper.getPercentagesOfProgress(item.getDoneMcq(),
-                            item.getTotalMcq()));
+                    ProgressHelper.getPercentagesOfProgress(doneMcq,
+                            totalMcq));
 
             mEachMcqSetIcon.setImageResource(iconList[position]);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, position+1+"", Toast.LENGTH_SHORT).show();
+                    onMcqSetClicked.onMcqSetClicked(position+1);
                 }
             });
         }

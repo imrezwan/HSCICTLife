@@ -4,4 +4,6 @@
     <dimen name="reg_content_margin">@dimen/_8sdp</dimen>
     <dimen name="toolbar_text_title">@dimen/_14sdp</dimen>
     <dimen name="contentPaddingForBottomNav">@dimen/_40sdp</dimen>
+    <dimen name="star_height">40dp</dimen>
+    <dimen name="star_width">40dp</dimen>
 </resources>

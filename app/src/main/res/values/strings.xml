@@ -30,4 +30,10 @@
     <string name="demo_how_many_times_study_text"><b>১ বার</b> সম্পূর্ণ পড়া শেষ করেছেন</string>
     <string name="navigation_drawer_open">nav_open</string>
     <string name="navigation_drawer_close">nav_close</string>
+    <string name="start_quiz_dialog_title"><b>পরীক্ষা :</b> অধ্যায় ১ , অধ্যায় ২,অধ্যায় ১ , অধ্যায় ২, অধ্যায় ১ , অধ্যায় ২</string>
+    <string name="start_quiz_dialog_total_questions"><b>সর্বমোট প্রশ্ন আছে :</b> 300 টি</string>
+    <string name="quiz_start_dialog_user_total_text">পরীক্ষা প্রশ্ন: </string>
+    <string name="quiz_start_dialog_user_time_text">সময়: </string>
+    <string name="quiz_start_dialog_user_time_unit_text">মিনিট</string>
+    <string name="quiz_start_dialog_user_total_unit_text">টি</string>
 </resources>

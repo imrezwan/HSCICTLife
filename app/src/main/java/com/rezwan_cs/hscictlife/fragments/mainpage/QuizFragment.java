@@ -1,21 +1,29 @@
 package com.rezwan_cs.hscictlife.fragments.mainpage;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.rezwan_cs.hscictlife.R;
+import com.rezwan_cs.hscictlife.activities.McqSetActivity;
 import com.rezwan_cs.hscictlife.adapters.ChapterListAdapter;
 import com.rezwan_cs.hscictlife.commons.Constants;
+import com.rezwan_cs.hscictlife.dialogs.StartQuizExamDialog;
 import com.rezwan_cs.hscictlife.interfaces.ChapterClicked;
 import com.rezwan_cs.hscictlife.modelclasses.ChapterModel;
+import com.rezwan_cs.hscictlife.utilities.ChapterNames;
+import com.rezwan_cs.hscictlife.utilities.DefaultTransition;
 
 import java.util.ArrayList;
 
@@ -27,7 +35,7 @@ public class QuizFragment extends Fragment {
     ChapterListAdapter chapterListAdapter ;
 
     //
-    Button mSelectQuizExam, mSelectQuizExercise;
+    Button mSelectQuizExam, mSelectQuizExercise, mStartQuizExam;
     String selected = Constants.EXCERCISE;
     ArrayList<Integer> chapterList = new ArrayList<>();
 
@@ -61,8 +69,23 @@ public class QuizFragment extends Fragment {
         getChapterDataReady();
         setUpChapterRecyclerView();
         quizTypeButtonSelection();
+        startQuizExamSection();
         defaultQuizTypeSelect();
         return view;
+    }
+
+    private void startQuizExamSection() {
+        mStartQuizExam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chapterList.size()>0){
+                    StartQuizExamDialog.showStartQuizExamDialog(getContext(), chapterList);
+                }
+                else{
+                    Toast.makeText(getContext(), Constants.PLEASE_SELECT_CHAPTER, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     private void defaultQuizTypeSelect() {
@@ -75,6 +98,8 @@ public class QuizFragment extends Fragment {
             public void onClick(View v) {
                 selectButton(mSelectQuizExam);
                 deSelectButton(mSelectQuizExercise);
+                mStartQuizExam.setVisibility(View.VISIBLE);
+                animateStartQuizExamButton();
                 selected = Constants.EXAM;
             }
         });
@@ -85,8 +110,22 @@ public class QuizFragment extends Fragment {
                 selectButton(mSelectQuizExercise);
                 deSelectButton(mSelectQuizExam);
                 selected = Constants.EXCERCISE;
+                mStartQuizExam.setVisibility(View.INVISIBLE);
+                animateStartQuizExamButton();
+                uncheckAllChapters();
+                setUpChapterRecyclerView();
             }
         });
+    }
+
+    private void uncheckAllChapters() {
+        for(int i = 0;i<chapterModelArrayList.size();i++){
+            chapterModelArrayList.get(i).setChecked(false);
+        }
+    }
+
+    private void animateStartQuizExamButton() {
+        mStartQuizExam.animate().alpha(1.0f).setDuration(600);
     }
 
     private void setUpChapterRecyclerView() {
@@ -95,33 +134,66 @@ public class QuizFragment extends Fragment {
         chapterListAdapter = new ChapterListAdapter(getContext(),
                 chapterModelArrayList, new ChapterClicked() {
             @Override
-            public void onChapterClicked(int chapterNum) {
+            public void onChapterClicked(int chapterNum, boolean checked) {
 
+                if(selected.equals(Constants.EXAM)){
+                    if(!checked){
+                        chapterList.add(chapterNum);
+                    }
+                    else{
+                        chapterList.remove((Integer) chapterNum);
+                    }
+                    chapterListAdapter.toggleChapterCheck(chapterNum-1);
+                }
+                else{
+                    chapterList.clear();
+                    //goto chapter set question activity
+                    goToMcqSetActivity(chapterNum);
+                }
+
+                Log.d(TAG, chapterList.toString());
             }
         });
         mChapterRecycler.setAdapter(chapterListAdapter);
         mChapterRecycler.setLayoutManager(layoutManager);
     }
 
+    private void goToMcqSetActivity(int chapterNum) {
+        Intent intent = new Intent(getActivity(), McqSetActivity.class);
+        intent.putExtra(Constants.EXTRA_CHAPTER_NUMBER, chapterNum);
+        intent.putExtra(Constants.EXTRA_CHAPTER_MCQ_SETS_TOTAL, getChapterMcqSetTotal(chapterNum));
+        startActivity(intent);
+        DefaultTransition.activityTransition(getActivity());
+    }
+
+    public static int getChapterMcqSetTotal(int chapterNum) {
+        switch (chapterNum){
+            case 1:
+                return 8;
+            case 2:
+                return 5;
+            case 3:
+                return 5;
+            case 4:
+                return 3;
+            case 5:
+                return 4;
+            case 6:
+                return 4;
+            default:
+                return 3;
+        }
+    }
+
     private void getChapterDataReady() {
-        chapterModelArrayList.add(new ChapterModel("অধ্যায় ১",
-                "বিশ্ব ও বাংলাদেশ প্রেক্ষিত", R.drawable.ic_chapter_1));
-        chapterModelArrayList.add(new ChapterModel("অধ্যায় ২",
-                "কমিউনিকেশন সিস্টেম ও নেটওয়ার্কিং", R.drawable.ic_chapter_2));
-        chapterModelArrayList.add(new ChapterModel("অধ্যায় ৩",
-                "সংখ্যাপদ্ধতি ও ডিজিটাল ডিভাইস", R.drawable.ic_chapter_3));
-        chapterModelArrayList.add(new ChapterModel("অধ্যায় ৪",
-                "ওয়েব ডিজাইন পরিচিতি ও HTML", R.drawable.ic_chapter_4));
-        chapterModelArrayList.add(new ChapterModel("অধ্যায় ৫",
-                "প্রোগামিং ভাষা", R.drawable.ic_chapter_5));
-        chapterModelArrayList.add(new ChapterModel("অধ্যায় ৬",
-                "ডেটাবেজ ম্যানেজমেন্ট সিস্টেম", R.drawable.ic_chapter_6));
+        chapterModelArrayList.addAll(ChapterNames.getChapterModelList());
     }
 
     private void findViews(View view) {
         mChapterRecycler = view.findViewById(R.id.rv_chapter_name_list);
         mSelectQuizExam = view.findViewById(R.id.btn_select_quiz_exam);
         mSelectQuizExercise = view.findViewById(R.id.btn_select_quiz_exercise);
+        mStartQuizExam = view.findViewById(R.id.btn_start_quiz_exam);
     }
 
 

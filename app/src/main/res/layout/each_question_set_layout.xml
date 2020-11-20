@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:orientation="horizontal"
-    android:background="#B2E2E8"
+    android:background="@drawable/each_mcq_set_bg"
     android:foreground="?android:selectableItemBackground"
-    android:padding="@dimen/_3sdp"
-    android:layout_marginBottom="@dimen/_1sdp"
+    android:padding="@dimen/_6sdp"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -31,13 +30,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="প্রথম সেট প্রশ্ন"
+            android:includeFontPadding="false"
             android:textStyle="bold"
-            android:textSize="@dimen/_18sdp"
+            android:textSize="@dimen/_14sdp"
             android:textColor="@color/colorPrimary"
             android:id="@+id/tv_question_set_name"
             />
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -46,7 +47,7 @@
             <ProgressBar
                 android:layout_weight="13"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_8sdp"
+                android:layout_height="@dimen/_6sdp"
                 android:progress="50"
                 android:requiresFadingEdge="horizontal"
                 android:indeterminate="false"
@@ -62,7 +63,8 @@
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:textStyle="bold"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_11sdp"
+                android:includeFontPadding="false"
                 android:textColor="@color/colorPrimary"
                 android:paddingHorizontal="@dimen/_5sdp"
                 android:text="৪/২০"
@@ -71,12 +73,24 @@
         </LinearLayout>
 
         <TextView
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/demo_how_many_times_study_text"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_10sdp"
+            android:includeFontPadding="false"
             android:textColor="@color/colorPrimary"
             android:id="@+id/tv_question_set_completed_count"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="২০ টি প্রশ্ন আছে"
+            android:textSize="@dimen/_10sdp"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/tv_question_total"
             />
 
     </LinearLayout>

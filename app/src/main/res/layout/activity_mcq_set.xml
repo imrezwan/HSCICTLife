@@ -6,12 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorWhite"
     tools:context=".activities.McqSetActivity">
 
     <LinearLayout
         android:background="@drawable/quiz_top_bg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_45sdp"
         android:layout_gravity="center_vertical"
         android:orientation="horizontal"
         >
@@ -21,14 +22,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_back"
-            android:padding="@dimen/_15sdp"
+            android:padding="@dimen/_14sdp"
             android:id="@+id/tv_back_btn"/>
 
         <TextView
+            android:id="@+id/tv_chapter_name_title"
             android:layout_weight="5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/_14sdp"
             android:textStyle="bold"
             android:layout_gravity="center_vertical"
             android:textColor="@color/colorTextPrimary"
@@ -51,7 +53,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rv_chapter_set_list"
-        android:padding="@dimen/_10sdp"
         />
 
 

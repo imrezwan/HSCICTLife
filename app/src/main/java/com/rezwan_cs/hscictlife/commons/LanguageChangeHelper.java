@@ -17,7 +17,7 @@ public class LanguageChangeHelper {
         return re;
     }
 
-    private static String singleCharBangla(Character c){
+    public static String singleCharBangla(Character c){
         if(c == '1'){
             return "১";
         }else if(c == '2'){
@@ -45,7 +45,7 @@ public class LanguageChangeHelper {
     }
 
 
-    private static String getRankingTextFromNumber(int c){
+    public static String getRankingTextFromNumber(int c){
         if(c == 1){
             return "প্রথম";
         }else if(c == 2){

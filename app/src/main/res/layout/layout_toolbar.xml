@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="বহুনির্বাচনী অনুশীলন"
-        android:id="@+id/tv_subject_activity_toolbar_title"
+        android:id="@+id/tv_toolbar_title"
         android:textColor="@color/colorWhite"/>
 
 </androidx.appcompat.widget.Toolbar>

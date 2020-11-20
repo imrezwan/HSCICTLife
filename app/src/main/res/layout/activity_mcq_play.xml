@@ -202,7 +202,7 @@
                                     android:id="@+id/tv_mcq_guide_play_option_1"
                                     android:theme="@style/McqOptionTextTheme"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:text=""
                                     />
 
@@ -239,7 +239,7 @@
                                     android:id="@+id/tv_mcq_guide_play_option_2"
                                     android:theme="@style/McqOptionTextTheme"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:text=""
                                     />
 
@@ -272,7 +272,7 @@
                                 <TextView
                                     android:theme="@style/McqOptionTextTheme"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:text=""
                                     android:id="@+id/tv_mcq_guide_play_option_3"
                                     />
@@ -308,7 +308,7 @@
                                     android:id="@+id/tv_mcq_guide_play_option_4"
                                     android:theme="@style/McqOptionTextTheme"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:text=""
                                     />
 
@@ -321,6 +321,7 @@
 
                         <!--Explanation-->
                         <LinearLayout
+                            android:visibility="gone"
                             android:id="@+id/ll_mcq_guide_play_explanation"
                             android:layout_marginVertical="@dimen/_4sdp"
                             android:layout_marginHorizontal="@dimen/_10sdp"
@@ -346,63 +347,113 @@
                     </LinearLayout>
                 </ScrollView>
 
-                <LinearLayout
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentBottom="true"
-                    android:padding="@dimen/_10sdp"
-                    android:id="@+id/ll_mcq_play_guide_next_question_section"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_7sdp"
-                        android:textSize="@dimen/_13sdp"
-                        android:paddingHorizontal="@dimen/_10sdp"
-                        android:text="আরো ১০ টি প্রশ্ন বাকি"
-                        android:paddingVertical="@dimen/_8sdp"
-                        android:layout_above="@+id/pb_mcq_guide_play_question_progress"
-                        android:id="@+id/tv_mcq_guide_play_question_remaining"
-                        android:textColor="@color/colorTextPrimary"
-                        android:fontFamily="@font/kalpurush"
-                        />
+               <LinearLayout
+                   android:layout_alignParentLeft="true"
+                   android:layout_alignParentBottom="true"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical">
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal">
 
+                       <TextView
+                           android:foreground="?android:selectableItemBackground"
+                           android:id="@+id/tv_mcq_practice_next_set_question"
+                           android:layout_marginHorizontal="@dimen/_10sdp"
+                           android:layout_alignParentBottom="true"
+                           android:layout_centerHorizontal="true"
+                           android:textSize="@dimen/_12sdp"
+                           android:textStyle="bold"
+                           android:textColor="@color/colorPrimary"
+                           android:drawableLeft="@drawable/ic_navigate_prev"
+                           android:fontFamily="@font/kalpurush"
+                           android:layout_width="0dp"
+                           android:layout_weight="1"
+                           android:gravity="center_vertical"
+                           android:layout_height="wrap_content"
+                           android:text="আগের সেট প্রশ্ন"/>
 
-                    <ProgressBar
-                        android:visibility="gone"
-                        android:animateLayoutChanges="true"
-                        android:id="@+id/pb_mcq_guide_play_question_progress"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:layout_centerHorizontal="true"
-                        android:progress="30"
-                        android:layout_above="@+id/btn_mcq_guide_play_next_question"
-                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                        android:fontFamily="@font/kalpurush"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_7sdp"
-                        android:gravity="center"
-                        android:layout_gravity="center"/>
-
-                    <Button
-                        android:foreground="?android:selectableItemBackground"
-                        android:id="@+id/btn_mcq_guide_play_next_question"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:textSize="@dimen/_13sdp"
-                        android:textStyle="bold"
-                        android:background="@drawable/mcq_next_button_bg"
-                        android:fontFamily="@font/kalpurush"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/mcq_guide_next_question"
-                        android:gravity="center"
-                        android:layout_gravity="center"/>
+                       <TextView
+                           android:foreground="?android:selectableItemBackground"
+                           android:id="@+id/tv_mcq_practice_prev_set_question"
+                           android:layout_marginHorizontal="@dimen/_10sdp"
+                           android:layout_alignParentBottom="true"
+                           android:layout_centerHorizontal="true"
+                           android:textSize="@dimen/_12sdp"
+                           android:textStyle="bold"
+                           android:fontFamily="@font/kalpurush"
+                           android:layout_width="0dp"
+                           android:layout_weight="1"
+                           android:textColor="@color/colorPrimary"
+                           android:layout_height="wrap_content"
+                           android:text="পরবর্তী সেট প্রশ্ন"
+                           android:drawableRight="@drawable/ic_navigate_next"
+                           android:gravity="end|center_vertical"
+                           android:layout_gravity="end"/>
 
 
-                </LinearLayout>
+
+                   </LinearLayout>
+
+                   <LinearLayout
+                       android:padding="@dimen/_6sdp"
+                       android:id="@+id/ll_mcq_play_guide_next_question_section"
+                       android:orientation="vertical"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content">
+
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginHorizontal="@dimen/_7sdp"
+                           android:textSize="@dimen/_13sdp"
+                           android:paddingHorizontal="@dimen/_10sdp"
+                           android:text=""
+                           android:paddingVertical="@dimen/_8sdp"
+                           android:layout_above="@+id/pb_mcq_guide_play_question_progress"
+                           android:id="@+id/tv_mcq_guide_play_question_remaining"
+                           android:textColor="@color/colorTextPrimary"
+                           android:fontFamily="@font/kalpurush"
+                           />
+
+
+                       <ProgressBar
+                           android:visibility="gone"
+                           android:animateLayoutChanges="true"
+                           android:id="@+id/pb_mcq_guide_play_question_progress"
+                           android:layout_marginHorizontal="@dimen/_10sdp"
+                           android:layout_centerHorizontal="true"
+                           android:progress="30"
+                           android:layout_above="@+id/btn_mcq_guide_play_next_question"
+                           style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                           android:fontFamily="@font/kalpurush"
+                           android:layout_width="match_parent"
+                           android:layout_height="@dimen/_7sdp"
+                           android:gravity="center"
+                           android:layout_gravity="center"/>
+
+                       <Button
+                           android:foreground="?android:selectableItemBackground"
+                           android:id="@+id/btn_mcq_guide_play_next_question"
+                           android:layout_marginHorizontal="@dimen/_10sdp"
+                           android:layout_alignParentBottom="true"
+                           android:layout_centerHorizontal="true"
+                           android:textSize="@dimen/_13sdp"
+                           android:textStyle="bold"
+                           android:background="@drawable/mcq_next_button_bg"
+                           android:fontFamily="@font/kalpurush"
+                           android:layout_width="match_parent"
+                           android:layout_height="@dimen/_35sdp"
+                           android:text="@string/mcq_guide_next_question"
+                           android:gravity="center"
+                           android:layout_gravity="center"/>
+
+
+                   </LinearLayout>
+               </LinearLayout>
 
             </RelativeLayout>
 

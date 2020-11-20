@@ -87,4 +87,18 @@ public class McqModel {
     public void setQuestionset(long questionset) {
         this.questionset = questionset;
     }
+
+    @Override
+    public String toString() {
+        return "McqModel{" +
+                "question='" + question + '\'' +
+                ", option1='" + option1 + '\'' +
+                ", option2='" + option2 + '\'' +
+                ", option3='" + option3 + '\'' +
+                ", option4='" + option4 + '\'' +
+                ", correctanswer=" + correctanswer +
+                ", chapter=" + chapter +
+                ", questionset=" + questionset +
+                '}';
+    }
 }

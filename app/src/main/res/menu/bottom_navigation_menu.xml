@@ -2,20 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
+ <!--   <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_mdi_home"
-        android:title="হোম" />
+        android:title="হোম" />-->
 
     <item
         android:id="@+id/nav_quiz"
         android:icon="@drawable/ic_quiz_icon"
         android:title="কুইজ" />
 
-    <item
+<!--    <item
         android:id="@+id/nav_ranking"
         android:icon="@drawable/ic_ranking_icon"
-        android:title="র‍্যাংকিং" />
+        android:title="র‍্যাংকিং" />-->
 
     <item
         android:id="@+id/nav_tools"

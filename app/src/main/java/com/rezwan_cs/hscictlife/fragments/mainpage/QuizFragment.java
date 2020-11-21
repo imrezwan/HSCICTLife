@@ -44,7 +44,7 @@ public class QuizFragment extends Fragment {
     }
 
 
-    public static QuizFragment newInstance(String param1, String param2) {
+    public static QuizFragment newInstance() {
         QuizFragment fragment = new QuizFragment();
         Bundle args = new Bundle();
 
@@ -186,6 +186,7 @@ public class QuizFragment extends Fragment {
     }
 
     private void getChapterDataReady() {
+        chapterModelArrayList.clear();
         chapterModelArrayList.addAll(ChapterNames.getChapterModelList());
     }
 

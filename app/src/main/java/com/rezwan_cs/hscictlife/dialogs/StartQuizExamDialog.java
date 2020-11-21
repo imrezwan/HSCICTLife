@@ -53,6 +53,9 @@ public class StartQuizExamDialog {
         builder.setView(view);
         Log.d(TAG,"Created");
 
+
+        mExamUserTotal.setSelection(mExamUserTotal.getText().length());
+        mExamTime.setSelection(mExamTime.getText().length());
         dialog.show();
 
         mStartExam.setOnClickListener(new View.OnClickListener() {

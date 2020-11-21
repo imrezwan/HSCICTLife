@@ -27,6 +27,7 @@ public class SplashScreen extends AppCompatActivity {
 
     private void goToMainActivity() {
         startActivity(new Intent(SplashScreen.this, MainActivity.class));
+        finish();
         DefaultTransition.activityTransition(this);
     }
 }

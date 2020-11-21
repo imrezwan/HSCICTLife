@@ -55,7 +55,7 @@ public class McqNavigationAdapter extends
         String options = "ক) "+mcqModel.getOption1()+"<br>"+
                 "খ) "+mcqModel.getOption2()+"<br>"+
                 "গ) "+mcqModel.getOption3()+"<br>"+
-                "ঘ) "+mcqModel.getOption4()+"<br>";
+                "ঘ) "+mcqModel.getOption4()+"";
 
         holder.mMcqOptions.setText(Html.fromHtml(options));
     }

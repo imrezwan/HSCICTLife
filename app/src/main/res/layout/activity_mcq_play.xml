@@ -381,7 +381,7 @@
 
                            <TextView
                                android:foreground="?android:selectableItemBackground"
-                               android:id="@+id/tv_mcq_practice_next_set_question"
+                               android:id="@+id/tv_mcq_practice_prev_set_question"
                                android:layout_marginHorizontal="@dimen/_10sdp"
                                android:layout_alignParentBottom="true"
                                android:layout_centerHorizontal="true"
@@ -398,7 +398,7 @@
 
                            <TextView
                                android:foreground="?android:selectableItemBackground"
-                               android:id="@+id/tv_mcq_practice_prev_set_question"
+                               android:id="@+id/tv_mcq_practice_next_set_question"
                                android:layout_marginHorizontal="@dimen/_10sdp"
                                android:layout_alignParentBottom="true"
                                android:layout_centerHorizontal="true"

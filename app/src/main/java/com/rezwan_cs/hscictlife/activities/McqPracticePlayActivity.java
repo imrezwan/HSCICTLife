@@ -22,6 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
 import com.rezwan_cs.hscictlife.R;
 import com.rezwan_cs.hscictlife.adapters.McqNavigationAdapter;
 import com.rezwan_cs.hscictlife.commons.Constants;

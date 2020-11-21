@@ -27,17 +27,20 @@ import java.util.Random;
 
 public class FirestoreRepository {
 
-    private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-    private CollectionReference quizListRef = firebaseFirestore.collection("mcq");
+    private FirebaseFirestore firebaseFirestore;
+    private CollectionReference quizListRef ;
     private OnExamFirestoreRepository examFirestoreRepository;
     private OnPracticeFirestoreRepository practiceFirestoreRepository;
 
     public FirestoreRepository(){
+        firebaseFirestore = FirebaseFirestore.getInstance();
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
                 .setPersistenceEnabled(true)
                 .setCacheSizeBytes(FirebaseFirestoreSettings.CACHE_SIZE_UNLIMITED)
                 .build();
         firebaseFirestore.setFirestoreSettings(settings);
+
+        quizListRef = firebaseFirestore.collection("mcq");
     }
 
     public void setUpExamRepository(OnExamFirestoreRepository examFirestoreRepository){

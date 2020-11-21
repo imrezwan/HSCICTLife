@@ -8,6 +8,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rezwan_cs.hscictlife.R;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         initBottomNavigationBar();
         // selectedFragment = new HomeFragment();
         navigation.setSelectedItemId(R.id.nav_quiz);
+
 
     }
 

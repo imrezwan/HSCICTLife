@@ -31,7 +31,7 @@
             android:textSize="@dimen/_18sdp"
             android:textStyle="bold"
             android:textColor="@color/colorTextPrimary"
-            android:text="HSC ICT"
+            android:text="HSC ICT Life"
             />
 
         <TextView

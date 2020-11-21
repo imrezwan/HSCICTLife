@@ -114,11 +114,12 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    boolean counting = true;
     private void startTimerCountdown(final long timeMinutes) {
         countDownTimer = new CountDownTimer( timeMinutes*60*1000+1000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                millisUntilFinishedCur = millisUntilFinished;
+                if(counting)millisUntilFinishedCur = millisUntilFinished;
                 timeTxt = getTimerString(millisUntilFinished);
                 mTimerText.setText(timeTxt);
                 Log.d(TAG, "COUNT: "+ millisUntilFinished);
@@ -133,10 +134,13 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void goToMcqExamResultPage() {
+        //counting = false;
         closeTimer();
         Intent intent = new Intent(this, McqExamResultActivity.class);
         intent.putExtra(Constants.EXTRA_CHAPTER_NUMBER_LIST, examChapterList);
-        intent.putExtra(Constants.EXTRA_EXAM_MCQ_TIME, getTimerString(totalQuestion*60*1000000-millisUntilFinishedCur));
+        Log.d(TAG, "COUNT:::::: "+ (totalQuestion*60*1000-millisUntilFinishedCur));
+        intent.putExtra(Constants.EXTRA_EXAM_MCQ_TIME, getTimerString(
+                totalQuestion*60*1000-millisUntilFinishedCur));
         intent.putExtra(Constants.EXTRA_EXAM_MCQ_TOTAL, totalQuestion);
         calculateCorrectAnswer();
         intent.putExtra(Constants.EXTRA_EXAM_CURRECT_ANSWER, currectAnswer);

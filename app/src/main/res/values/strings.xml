@@ -37,7 +37,7 @@
     <string name="quiz_start_dialog_user_time_unit_text">মিনিট</string>
     <string name="quiz_start_dialog_user_total_unit_text">টি</string>
     <string name="c_code_instruction_text">* সি কোড রান করতে ইন্টারনেট সংযোগ প্রয়োজন  \n* ছবি থেকে কোড করার জন্য শুধুমাত্র প্রথমবার ইন্টারনেটের প্রয়োজন</string>
-    <string name="html_code_instruction_text">*ছবি থেকে কোড করার জন্য শুধুমাত্র প্রথমবার ইন্টারনেটের প্রয়োজন</string>
+    <string name="html_code_instruction_text">* কোডের ছবি তুলে সেটাকে কোডে পরিণত করতে পারবেন\n* ছবি থেকে কোড করার জন্য শুধুমাত্র প্রথমবার ইন্টারনেটের প্রয়োজন</string>
     <string name="dev_designation">4th year student, CSE, KUET</string>
     <string name="dev_name">Rezwan Pranto</string>
     <string name="app_dev">App Developer</string>

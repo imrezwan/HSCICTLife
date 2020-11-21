@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="20dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:id="@+id/dev_card">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                android:text="@string/app_dev"
+                android:gravity="center"
+                android:textSize="@dimen/_28sdp"
+                android:textStyle="bold"
+                android:fontFamily="@font/kalpurush"
+                android:textColor="@color/colorWhite"
+                />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:src="@drawable/dev_pic"
+                android:layout_gravity="center_horizontal"
+                app:civ_border_width="@dimen/_5sdp"
+                android:elevation="15dp"
+                app:civ_border_color="@color/colorPrimary"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dev_name"
+                android:gravity="center"
+                android:paddingVertical="3dp"
+                android:textSize="@dimen/_20sdp"
+                android:includeFontPadding="false"
+                android:textStyle="bold"
+                android:textColor="#272626"
+                android:fontFamily="@font/firacode"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dev_designation"
+                android:gravity="center"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/firacode"
+                android:letterSpacing="-0.1"
+                android:textColor="@color/colorPrimary"
+                />
+
+
+            <LinearLayout
+                android:layout_marginVertical="15dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/fb_link"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="18dp"
+                    android:src="@drawable/facebook"
+                    android:elevation="7dp"
+                    />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/git_link"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/github"
+                    android:layout_marginHorizontal="27dp"
+                    android:elevation="7dp"
+                    />
+
+             <!--   <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/web_link"
+                    android:layout_marginRight="18dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/website"
+                    android:elevation="7dp"
+                    />-->
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

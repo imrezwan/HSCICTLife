@@ -33,10 +33,17 @@
             style="@style/MoreButtonTheme"
             />
 
-        <Button
+        <!--<Button
             android:id="@+id/btn_give_opinion"
             android:drawableLeft="@drawable/ic_give_opinion"
             android:text="@string/more_give_opinion_text"
+            style="@style/MoreButtonTheme"
+            />-->
+
+        <Button
+            android:id="@+id/btn_share_app"
+            android:drawableLeft="@drawable/ic_baseline_share_24"
+            android:text="@string/more_share_app_text"
             style="@style/MoreButtonTheme"
             />
 

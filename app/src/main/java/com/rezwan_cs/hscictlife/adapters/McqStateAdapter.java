@@ -97,7 +97,7 @@ public class McqStateAdapter extends
                 @Override
                 public void onClick(View v) {
                     listener.mcqNumberClicked(position);
-                    Toast.makeText(context, position+1+"", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, position+1+"", Toast.LENGTH_SHORT).show();
                 }
             });
         }

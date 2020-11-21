@@ -18,6 +18,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,6 +70,8 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
     //
     int chapterNumbr = 1, mcqSetNumber = 1;
     TextView mNextSetQues, mPrevSetQues, mToolbarTitle;
+
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +148,7 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
     }
 
     private void getMcqDataReady() {
+        progressBar.setVisibility(View.VISIBLE);
         FirestoreRepository firestoreRepository = new FirestoreRepository();
         firestoreRepository.getPracticeQuizdata(chapterNumbr, mcqSetNumber);
         firestoreRepository.setUpPracticeRepository(new FirestoreRepository.OnPracticeFirestoreRepository() {
@@ -153,6 +157,7 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
                 Log.d("DATA", quizListModelList.get(0).toString());
                 allQuestionArrayList.addAll(quizListModelList);
                 setUpFirstTimeQuestionWork();
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -166,6 +171,8 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
     }
 
     private void findViews() {
+        progressBar = findViewById(R.id.pb_code_in_progress);
+
         mNewQuestionOrNotFlagTxt = findViewById(R.id.tv_mcq_practice_play_new_question_or_not);
         mPracticePlayInstructionTxt = findViewById(R.id.tv_mcq_practice_play_instructions);
         mPracticeQuestionTxt = findViewById(R.id.tv_mcq_practice_play_question);
@@ -315,6 +322,12 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
         mNewQuestionOrNotFlagTxt.setTextColor(getResources().getColor(R.color.colorRepeatedQuestionInstructionTopperText));
     }
 
+    private void setUpWrongQuestionTopSectionColor() {
+        mMcqPracticeTopPartLinear.setBackgroundColor(getResources().getColor(R.color.colorWrongQuestionInstructionBackground));
+        mPracticePlayInstructionTxt.setTextColor(getResources().getColor(R.color.colorWrongQuestionInstructionTopperText));
+        mNewQuestionOrNotFlagTxt.setTextColor(getResources().getColor(R.color.colorWrongQuestionInstructionTopperText));
+    }
+
     private void setUpNewQuestionTopInstructionSection() {
         mPracticePlayInstructionTxt.setText(Constants.PICK_CORRECT_ANSWER_INSTRUCTION);
         mNewQuestionOrNotFlagTxt.setText(Constants.NEW_QUESTION_INFO_FLAG);
@@ -452,6 +465,7 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
             setUpSingleOptionMarkerWrongInitially(mOption4CircleMaker, mOption4Txt);
             Log.d(TAG, "Inside: "+i);
         }
+        Log.d(TAG, "VALUE");
 
         setUpTheCurrectAnswerColor();
         makeMcqDataCircularDependingOnAnswerIsCurrectOrNot(selectedAnswer);
@@ -462,7 +476,9 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
     }
 
     private void makeMcqDataCircularDependingOnAnswerIsCurrectOrNot(long selectedAnswer) {
+        Log.d(TAG, "selected: "+ selectedAnswer);
         if(currentQuestion.getCorrectanswer() == selectedAnswer){
+            Log.d(TAG, "CURRECT");
            /* Log.d(TAG, "Question array befor: "+ questionArrayList.size() + "  >> "
             + questionArrayList.get(0).getQuestion());*/
 
@@ -488,6 +504,7 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
         }
         else{
             //Answer not correct section
+            Log.d(TAG, "WRONG");
 
             if(failedquestionArrayList.indexOf(currentQuestion) == -1){
                 ////not exist in failed question array list means this question shows for the first time
@@ -499,11 +516,12 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
                 //so just simply remove this item and add again for asking later again
                 failedquestionArrayList.remove(currentQuestion);
                 failedquestionArrayList.add(currentQuestion);
+
             }
+
             mPracticePlayInstructionTxt.setText(Constants.THIS_QUESTION_WILL_BE_ASKED_AGAIN);
             mNewQuestionOrNotFlagTxt.setText(Constants.WRONG_ANSWER);
-            setUpOldQuestionTopInstructionSection();
-
+            setUpWrongQuestionTopSectionColor();
         }
     }
 

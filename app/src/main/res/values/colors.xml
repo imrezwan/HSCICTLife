@@ -24,4 +24,6 @@
     <color name="colorStarRightSide">#7191B5</color>
     <color name="colorStarLeftSide">#4F79A8</color>
     <color name="colorStarText">#FFFFFF</color>
+    <color name="colorWrongQuestionInstructionTopperText">#F17A7A</color>
+    <color name="colorWrongQuestionInstructionBackground">#F4EAEA</color>
 </resources>

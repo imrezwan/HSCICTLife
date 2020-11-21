@@ -98,7 +98,7 @@ public class ChapterListAdapter extends
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, item.getChapterCountName(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, item.getChapterCountName(), Toast.LENGTH_SHORT).show();
                     chapterClickedListener.onChapterClicked(position+1, item.isChecked());
                 }
             });

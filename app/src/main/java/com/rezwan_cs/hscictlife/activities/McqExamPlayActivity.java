@@ -19,6 +19,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,6 +71,9 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     Button mEndExamBtn;
     String timeTxt = "";
     CountDownTimer countDownTimer;
+    long millisUntilFinishedCur = 0;
+    boolean isInitCounter = false;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,9 +118,10 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
         countDownTimer = new CountDownTimer( timeMinutes*60*1000+1000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                millisUntilFinishedCur = millisUntilFinished;
                 timeTxt = getTimerString(millisUntilFinished);
                 mTimerText.setText(timeTxt);
-                Log.d(TAG, "TESTPAPRE COUNT: "+ getTimerString(millisUntilFinished));
+                Log.d(TAG, "COUNT: "+ millisUntilFinished);
             }
             @Override
             public void onFinish() {
@@ -124,12 +129,14 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
                 goToMcqExamResultPage();
             }
         }.start();
+        isInitCounter = true;
     }
 
     private void goToMcqExamResultPage() {
+        closeTimer();
         Intent intent = new Intent(this, McqExamResultActivity.class);
         intent.putExtra(Constants.EXTRA_CHAPTER_NUMBER_LIST, examChapterList);
-        intent.putExtra(Constants.EXTRA_EXAM_MCQ_TIME, timeTxt);
+        intent.putExtra(Constants.EXTRA_EXAM_MCQ_TIME, getTimerString(totalQuestion*60*1000000-millisUntilFinishedCur));
         intent.putExtra(Constants.EXTRA_EXAM_MCQ_TOTAL, totalQuestion);
         calculateCorrectAnswer();
         intent.putExtra(Constants.EXTRA_EXAM_CURRECT_ANSWER, currectAnswer);
@@ -167,6 +174,7 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void readyMcqStateDataInitialization() {
+        progressBar.setVisibility(View.VISIBLE);
         FirestoreRepository firestoreRepository = new FirestoreRepository();
 
         firestoreRepository.setUpExamRepository(new FirestoreRepository.OnExamFirestoreRepository() {
@@ -178,6 +186,7 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
                     mcqModel.setMcqState(ExamMcqModel.STATE.UNANSWERED);
                     allMcqArrayList.add(mcqModel);
                 }
+                progressBar.setVisibility(View.GONE);
                 setUpExamMcq();
             }
 
@@ -233,6 +242,8 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void findViews() {
+        progressBar = findViewById(R.id.pb_code_in_progress);
+
         mMcqStatesRecycler = findViewById(R.id.rv_mcq_exam_question_state_list);
 
         mPracticeQuestionTxt = findViewById(R.id.tv_mcq_guide_play_question);
@@ -598,5 +609,15 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     }
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        closeTimer();
+    }
 
+    private void closeTimer() {
+        if(isInitCounter){
+            countDownTimer.cancel();
+        }
+    }
 }

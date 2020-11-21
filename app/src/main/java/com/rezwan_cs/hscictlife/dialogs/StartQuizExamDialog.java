@@ -68,6 +68,7 @@ public class StartQuizExamDialog {
                         mExamUserTotal.setText((arrayList.size()*100)+"");
                     }
                     else{
+                        dialog.dismiss();
                         Intent intent = new Intent(context, McqExamPlayActivity.class);
                         intent.putExtra(Constants.EXTRA_EXAM_MCQ_TOTAL, Integer.valueOf(mcqTotal));
                         intent.putExtra(Constants.EXTRA_EXAM_MCQ_TIME, Integer.valueOf(mcqTime));

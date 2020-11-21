@@ -70,6 +70,18 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <ProgressBar
+                    android:id="@+id/pb_code_in_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:foregroundTint="@color/colorPrimary"
+                    android:indeterminate="true"
+                    android:progressTint="#EEA32424"
+                    android:indeterminateTint="@color/colorPrimary"
+                    />
+
                 <!--TOP PART-->
                 <LinearLayout
                     android:layout_alignParentTop="true"

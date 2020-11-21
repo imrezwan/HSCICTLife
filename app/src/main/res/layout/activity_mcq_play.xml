@@ -29,6 +29,18 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <ProgressBar
+                    android:id="@+id/pb_code_in_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:foregroundTint="@color/colorPrimary"
+                    android:indeterminate="true"
+                    android:progressTint="#EEA32424"
+                    android:indeterminateTint="@color/colorPrimary"
+                    />
+
                 <!--TOP PART-->
                 <LinearLayout
                     android:id="@+id/ll_mcq_guide_play_top_part"
@@ -405,6 +417,14 @@
 
 
                        </LinearLayout>
+
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="1dp"
+                           android:background="@color/colorPrimary"
+                           android:layout_marginLeft="@dimen/_15sdp"
+                           android:layout_marginRight="@dimen/_15sdp"
+                           />
 
                        <TextView
                            android:layout_width="match_parent"

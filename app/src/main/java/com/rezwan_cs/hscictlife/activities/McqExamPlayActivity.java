@@ -134,7 +134,7 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void goToMcqExamResultPage() {
-        //counting = false;
+        counting = false;
         closeTimer();
         Intent intent = new Intent(this, McqExamResultActivity.class);
         intent.putExtra(Constants.EXTRA_CHAPTER_NUMBER_LIST, examChapterList);

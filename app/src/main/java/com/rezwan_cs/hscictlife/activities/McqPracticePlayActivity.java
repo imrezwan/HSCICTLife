@@ -104,7 +104,7 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
     }
 
     private void goToMcqPracticePlay(int mcqSetNumber) {
-        if(mcqSetNumber<0){
+        if(mcqSetNumber<=0){
             Toast.makeText(this, "আগের কোন প্রশ্ন সেট নেই এই অধ্যয়ের জন্য ", Toast.LENGTH_LONG).show();
         }
         else if(QuizFragment.getChapterMcqSetTotal(chapterNumbr) <= mcqSetNumber){

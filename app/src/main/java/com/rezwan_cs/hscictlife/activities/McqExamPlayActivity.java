@@ -138,9 +138,9 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
         closeTimer();
         Intent intent = new Intent(this, McqExamResultActivity.class);
         intent.putExtra(Constants.EXTRA_CHAPTER_NUMBER_LIST, examChapterList);
-        Log.d(TAG, "COUNT:::::: "+ (totalQuestion*60*1000-millisUntilFinishedCur));
+        Log.d(TAG, "COUNT:::::: "+ (mcqTime*60*1000-millisUntilFinishedCur));
         intent.putExtra(Constants.EXTRA_EXAM_MCQ_TIME, getTimerString(
-                totalQuestion*60*1000-millisUntilFinishedCur));
+                mcqTime*60*1000-millisUntilFinishedCur));
         intent.putExtra(Constants.EXTRA_EXAM_MCQ_TOTAL, totalQuestion);
         calculateCorrectAnswer();
         intent.putExtra(Constants.EXTRA_EXAM_CURRECT_ANSWER, currectAnswer);

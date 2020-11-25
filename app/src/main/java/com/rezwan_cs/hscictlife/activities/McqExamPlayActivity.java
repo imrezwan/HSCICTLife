@@ -122,7 +122,7 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
                 if(counting)millisUntilFinishedCur = millisUntilFinished;
                 timeTxt = getTimerString(millisUntilFinished);
                 mTimerText.setText(timeTxt);
-                Log.d(TAG, "COUNT: "+ millisUntilFinished);
+                //Log.d(TAG, "COUNT: "+ millisUntilFinished);
             }
             @Override
             public void onFinish() {
@@ -138,7 +138,7 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
         closeTimer();
         Intent intent = new Intent(this, McqExamResultActivity.class);
         intent.putExtra(Constants.EXTRA_CHAPTER_NUMBER_LIST, examChapterList);
-        Log.d(TAG, "COUNT:::::: "+ (mcqTime*60*1000-millisUntilFinishedCur));
+       // Log.d(TAG, "COUNT:::::: "+ (mcqTime*60*1000-millisUntilFinishedCur));
         intent.putExtra(Constants.EXTRA_EXAM_MCQ_TIME, getTimerString(
                 mcqTime*60*1000-millisUntilFinishedCur));
         intent.putExtra(Constants.EXTRA_EXAM_MCQ_TOTAL, totalQuestion);
@@ -185,6 +185,10 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
 
             @Override
             public void quizListExamDataAdded(List<ExamMcqModel> quizListModelList) {
+                if(quizListModelList.size()==0){
+                    Toast.makeText(McqExamPlayActivity.this,
+                            "অনুগ্রহ করে ইন্টারনেট কানেকশন চালু করুন", Toast.LENGTH_LONG).show();
+                }
                 for (int i = 0;i<quizListModelList.size();i++){
                     ExamMcqModel mcqModel = quizListModelList.get(i);
                     mcqModel.setMcqState(ExamMcqModel.STATE.UNANSWERED);
@@ -202,38 +206,6 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
 
         firestoreRepository.getExamQuizdata(mcqTotal, examChapterList);
 
-       /*allMcqArrayList.add(new ExamMcqModel("1.What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allMcqArrayList.add(new ExamMcqModel("2.What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allMcqArrayList.add(new ExamMcqModel("3.What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allMcqArrayList.add(new ExamMcqModel("4.What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allMcqArrayList.add(new ExamMcqModel("5.What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allMcqArrayList.add(new ExamMcqModel("6.What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allMcqArrayList.add(new ExamMcqModel("7.What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allMcqArrayList.add(new ExamMcqModel("8.What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allMcqArrayList.add(new ExamMcqModel("9.What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-        allMcqArrayList.add(new ExamMcqModel("10.What's your name?", "Pranto",
-                "Rka", "ridi", "ohao",
-                1,1, 1));
-
-        setUpExamMcq();*/
     }
 
     private long calculateCorrectAnswer(){
@@ -365,7 +337,7 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void clickabililityChecker() {
-        Log.d(TAG, "ANS: "+currentQuestion.getMcqState()+"  QUES: "+ currentQuestion.getQuestion());
+        //Log.d(TAG, "ANS: "+currentQuestion.getMcqState()+"  QUES: "+ currentQuestion.getQuestion());
         if(currentQuestion.getMcqState() == ExamMcqModel.STATE.UNANSWERED){
             enableMcqOptionsClick();
         }
@@ -404,7 +376,7 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void setUpSingleOptionEverything(TextView circleMaker, TextView optionText) {
-        Log.d(TAG, currentQuestion.toString());
+        //Log.d(TAG, currentQuestion.toString());
         ExamMcqModel.STATE currentState = currentQuestion.getMcqState();
 
         if(currentState == ExamMcqModel.STATE.CURRECT){
@@ -508,7 +480,7 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void valueChangeAccordingly(int i) {
-        Log.d(TAG, "TOP: "+i);
+        //Log.d(TAG, "TOP: "+i);
         ExamMcqModel item = (ExamMcqModel)allMcqArrayList.get((int)currentPos);
         item.setAnswered(i);
         setHowManyAnswered();
@@ -516,24 +488,23 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
 
         mcqStateAdapter.changeMcqState((int)currentPos,item.getMcqState());
 
-        Log.d(TAG, "STATE: "+((ExamMcqModel)allMcqArrayList
-                .get((int)currentPos)).getMcqState()+"");
+        //Log.d(TAG, "STATE: "+((ExamMcqModel)allMcqArrayList.get((int)currentPos)).getMcqState()+"");
 
         if(i==1){
             setUpSingleOptionWrongColor(mOption1CircleMaker, mOption1Txt);
-            Log.d(TAG, "Inside: "+i);
+            //Log.d(TAG, "Inside: "+i);
         }
         else if(i==2){
             setUpSingleOptionWrongColor(mOption2CircleMaker, mOption2Txt);
-            Log.d(TAG, "Inside: "+i);
+            //Log.d(TAG, "Inside: "+i);
         }
         else if(i==3){
             setUpSingleOptionWrongColor(mOption3CircleMaker, mOption3Txt);
-            Log.d(TAG, "Inside: "+i);
+           // Log.d(TAG, "Inside: "+i);
         }
         else if(i==4){
             setUpSingleOptionWrongColor(mOption4CircleMaker, mOption4Txt);
-            Log.d(TAG, "Inside: "+i);
+            //Log.d(TAG, "Inside: "+i);
         }
 
         setUpTheCurrectAnswerColor();

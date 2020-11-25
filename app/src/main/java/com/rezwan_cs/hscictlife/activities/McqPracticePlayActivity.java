@@ -155,7 +155,11 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
         firestoreRepository.setUpPracticeRepository(new FirestoreRepository.OnPracticeFirestoreRepository() {
             @Override
             public void quizListPracticeDataAdded(List<PracticeMcqModel> quizListModelList) {
-                Log.d("DATA", quizListModelList.get(0).toString());
+               //Log.d("DATA", quizListModelList.get(0).toString());
+                if(quizListModelList.size()==0){
+                    Toast.makeText(McqPracticePlayActivity.this,
+                            "অনুগ্রহ করে ইন্টারনেট কানেকশন চালু করুন", Toast.LENGTH_LONG).show();
+                }
                 allQuestionArrayList.addAll(quizListModelList);
                 setUpFirstTimeQuestionWork();
                 progressBar.setVisibility(View.GONE);
@@ -163,7 +167,7 @@ public class McqPracticePlayActivity extends AppCompatActivity implements View.O
 
             @Override
             public void onError(Exception e) {
-                Log.d("DATA", e.getMessage());
+                //Log.d("DATA", e.getMessage());
             }
         });
 

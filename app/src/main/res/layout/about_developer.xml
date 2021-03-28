@@ -29,7 +29,6 @@
                 android:gravity="center"
                 android:textSize="@dimen/_28sdp"
                 android:textStyle="bold"
-                android:fontFamily="@font/kalpurush"
                 android:textColor="@color/colorWhite"
                 />
 
@@ -62,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/dev_designation"
                 android:gravity="center"
+                android:visibility="gone"
                 android:textSize="@dimen/_14sdp"
                 android:fontFamily="@font/firacode"
                 android:letterSpacing="-0.1"

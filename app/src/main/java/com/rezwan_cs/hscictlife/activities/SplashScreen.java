@@ -21,12 +21,12 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 goToMainActivity();
             }
-        }, 1500);
+        }, 0);
 
     }
 
     private void goToMainActivity() {
-        startActivity(new Intent(SplashScreen.this, MainActivity.class));
+        startActivity(new Intent(SplashScreen.this, InputNameActivity.class));
         finish();
         DefaultTransition.activityTransition(this);
     }

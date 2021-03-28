@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="#DADFFF"
     tools:context=".fragments.mainpage.HomeFragment">
 
     <LinearLayout
@@ -36,6 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="রেজওয়ান প্রান্ত"
+                android:id="@+id/tv_user_name"
                 android:textSize="@dimen/_16sdp"
                 android:textStyle="bold"
                 android:paddingTop="@dimen/_2sdp"
@@ -44,7 +46,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rangpur Govt college"
+                android:text="এইচএসসি শিক্ষার্থী"
                 android:textSize="@dimen/_12sdp"
                 android:textColor="@color/colorTextWhite"
                 android:fontFamily="@font/kalpurush"/>
@@ -53,5 +55,161 @@
 
 
     </LinearLayout>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="এই অ্যাপের মাধ্যমে কিভাবে উপকৃত হতে পারেনঃ "
+                    android:background="@color/colorPrimaryLight"
+                    android:layout_marginBottom="@dimen/_6sdp"
+                    android:textColor="@color/colorWhite"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nirdeshona"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="সাম্প্রতিক পরীক্ষাঃ "
+                    android:background="@color/colorPrimaryLight"
+                    android:layout_marginBottom="@dimen/_6sdp"
+                    android:textColor="@color/colorWhite"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rv_exam_result_list"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_no_exam"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_no_exam_result"
+                        android:text="@string/no_result"
+                        android:gravity="center"
+                        android:padding="@dimen/_10sdp"
+                        android:textStyle="bold|italic"
+                        android:background="@drawable/input_next_button"
+                        android:textColor="@color/colorSweetRed"/>
+
+                    <Button
+                        android:id="@+id/btn_give_exam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="পরীক্ষা দিন"
+                        android:fontFamily="@font/kalpurush"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/_10sdp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="সাম্প্রতিক কোড রানঃ "
+                    android:background="@color/colorPrimaryLight"
+                    android:layout_marginBottom="@dimen/_6sdp"
+                    android:textColor="@color/colorWhite"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginBottom="@dimen/_30sdp"
+                    android:id="@+id/rv_code_run_list"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_no_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_no_code_run"
+                        android:text="@string/no_code_run"
+                        android:gravity="center"
+                        android:textStyle="bold|italic"
+                        android:padding="@dimen/_10sdp"
+                        android:background="@drawable/input_next_button"
+                        android:textColor="@color/colorSweetRed"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="কোড রান করুন"
+                        android:fontFamily="@font/kalpurush"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/_10sdp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

@@ -26,4 +26,5 @@
     <color name="colorStarText">#FFFFFF</color>
     <color name="colorWrongQuestionInstructionTopperText">#F17A7A</color>
     <color name="colorWrongQuestionInstructionBackground">#F4EAEA</color>
+    <color name="colorPrimaryLight">#595B6E</color>
 </resources>

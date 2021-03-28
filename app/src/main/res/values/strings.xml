@@ -42,4 +42,9 @@
     <string name="dev_name">Rezwan Pranto</string>
     <string name="app_dev">App Developer</string>
     <string name="more_share_app_text">শেয়ার করুন</string>
+    <string name="input_your_name_text">আপনার নাম</string>
+    <string name="input_next_text">পরবর্তী</string>
+    <string name="nirdeshona"><b>... কুইজ পরীক্ষা দিতে পারবেন\n... ভুল হওয়া প্রশ্নগুলো বার বার অনুশীলনের মাধ্যমে প্রস্তুতি নিতে পারবেন\n... সি এবং HTML কোড রান করতে পারবেন, এমনকি বইয়ের কোডের ছবি তুলে সেগুলো রান/কম্পাইল করতে পারবেন</b></string>
+    <string name="no_result">আপনি এখন পর্যন্ত কোন পরীক্ষা দেন নি</string>
+    <string name="no_code_run">আপনি এখন পর্যন কোন সি কোড রান করেন নি</string>
 </resources>

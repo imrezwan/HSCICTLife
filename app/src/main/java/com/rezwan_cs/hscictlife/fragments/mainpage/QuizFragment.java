@@ -71,6 +71,7 @@ public class QuizFragment extends Fragment {
         quizTypeButtonSelection();
         startQuizExamSection();
         defaultQuizTypeSelect();
+        onClickQuizExam();
         return view;
     }
 
@@ -96,26 +97,34 @@ public class QuizFragment extends Fragment {
         mSelectQuizExam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectButton(mSelectQuizExam);
-                deSelectButton(mSelectQuizExercise);
-                mStartQuizExam.setVisibility(View.VISIBLE);
-                animateStartQuizExamButton();
-                selected = Constants.EXAM;
+                onClickQuizExam();
             }
         });
 
         mSelectQuizExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectButton(mSelectQuizExercise);
-                deSelectButton(mSelectQuizExam);
-                selected = Constants.EXCERCISE;
-                mStartQuizExam.setVisibility(View.INVISIBLE);
-                animateStartQuizExamButton();
-                uncheckAllChapters();
-                setUpChapterRecyclerView();
+                onClickExcercise();
             }
         });
+    }
+
+    private void onClickExcercise() {
+        selectButton(mSelectQuizExercise);
+        deSelectButton(mSelectQuizExam);
+        selected = Constants.EXCERCISE;
+        mStartQuizExam.setVisibility(View.INVISIBLE);
+        animateStartQuizExamButton();
+        uncheckAllChapters();
+        setUpChapterRecyclerView();
+    }
+
+    private void onClickQuizExam() {
+        selectButton(mSelectQuizExam);
+        deSelectButton(mSelectQuizExercise);
+        mStartQuizExam.setVisibility(View.VISIBLE);
+        animateStartQuizExamButton();
+        selected = Constants.EXAM;
     }
 
     private void uncheckAllChapters() {

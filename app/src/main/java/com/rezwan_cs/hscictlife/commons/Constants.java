@@ -25,6 +25,7 @@ public class Constants {
     public static final String EXTRA_EXAM_CURRECT_ANSWER = "mcq_currect_answer";
     public static final String EXTRA_EXAM_TOTAL_ANSWERED = "mcq_total_answered";
     public static final String MY_APP_NAME = "HSCT ICT";
+    public static final String NAME_KEY = "_NAME_KEY_";
     public static String ML_RECOG_ERR = "ছবি থেকে কোড প্রথমবার বের করার জন্য ইন্টারনেটের প্রয়োজন হয়, অনুগ্রহ করে ইন্টারনেট সংযোগ চালু করে আবার চেষ্টা করুন";
 
     public static final String MCQ_SET_HOW_MANY = " সম্পূর্ণ পড়া শেষ করেছেন";

@@ -40,7 +40,7 @@ import retrofit2.Response;
 import retrofit2.http.Field;
 
 public class MainActivity extends AppCompatActivity {
-    BottomNavigationView navigation;
+    public BottomNavigationView navigation;
     int MY_REQUEST_CODE = 11;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         initBottomNavigationBar();
         // selectedFragment = new HomeFragment();
-        navigation.setSelectedItemId(R.id.nav_quiz);
+        navigation.setSelectedItemId(R.id.nav_home);
 
         checkIfUpdateIsAvailable();
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                             // Pass the intent that is returned by 'getAppUpdateInfo()'.
                             appUpdateInfo,
                             // Or 'AppUpdateType.FLEXIBLE' for flexible updates.
-                            AppUpdateType.IMMEDIATE,
+                            AppUpdateType.FLEXIBLE,
                             // The current activity making the update request.
                             this,
                             // Include a request code to later monitor this update request.
@@ -182,10 +182,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment;
                 switch (item.getItemId()) {
-                /*    case R.id.nav_home:
-                        fragment = new HomeFragment();
+                    case R.id.nav_home:
+                        fragment = HomeFragment.newInstance();
                         loadFragment(fragment);
-                        return true;*/
+                        return true;
                     case R.id.nav_quiz:
                         fragment = QuizFragment.newInstance();
                         loadFragment(fragment);

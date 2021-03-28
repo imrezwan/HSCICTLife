@@ -19,8 +19,11 @@ import android.widget.TextView;
 import com.rezwan_cs.hscictlife.R;
 import com.rezwan_cs.hscictlife.commons.CodeEditorHelper;
 import com.rezwan_cs.hscictlife.commons.CodeFromPicFragmentCommons;
+import com.rezwan_cs.hscictlife.modelclasses.CCode;
 import com.rezwan_cs.hscictlife.modelclasses.CompilerFinal;
 import com.rezwan_cs.hscictlife.repositories.CompilerRepository;
+import com.rezwan_cs.hscictlife.utilities.CCodeDao;
+import com.rezwan_cs.hscictlife.utilities.ICTDatabase;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 public class CProgramFragment extends CodeFromPicFragmentCommons implements View.OnClickListener{
@@ -33,6 +36,8 @@ public class CProgramFragment extends CodeFromPicFragmentCommons implements View
     ProgressBar progressBar;
 
     EditText mInput;
+
+    String codeStr = "", inputStr = "", outputStr = "";
 
     public CProgramFragment() {
         // Required empty public constructor
@@ -131,8 +136,11 @@ public class CProgramFragment extends CodeFromPicFragmentCommons implements View
                     doRunButton();
                 }
                 //Log.d("Compiler Out:: ", compilerFinal.getOutput());
-                mOutput.setText(compilerFinal.getOutput()!=null?compilerFinal.getOutput().replace("\\n", "\n"):"Error");
+                outputStr = compilerFinal.getOutput()!=null?compilerFinal.getOutput().replace("\\n", "\n"):"Error";
+                mOutput.setText(outputStr);
                 progressBar.setVisibility(View.GONE);
+
+                storeCCodeToLocal();
             }
 
             @Override
@@ -142,8 +150,24 @@ public class CProgramFragment extends CodeFromPicFragmentCommons implements View
         });
         Log.d("CC", mCodes.getText().toString().trim());
         progressBar.setVisibility(View.VISIBLE);
-        compilerRepository.getFinalCompilerResult(mCodes.getText().toString().trim(),
-                mInput.getText().toString().trim());
+
+        codeStr = mCodes.getText().toString().trim();
+        inputStr = mInput.getText().toString().trim();
+        compilerRepository.getFinalCompilerResult(codeStr,
+                inputStr);
+    }
+
+    private void storeCCodeToLocal() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ICTDatabase ictDatabase = ICTDatabase.getInstance(getContext());
+                CCodeDao cCodeDao = ictDatabase.cCodeDao();
+                cCodeDao.insertResult(new CCode(codeStr, inputStr, outputStr));
+
+                Log.d("CCODE", cCodeDao.getAll().toString());
+            }
+        }).start();
     }
 
     private void doHideButton() {

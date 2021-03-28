@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_gravity="center"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/input_next_button"
+        android:padding="@dimen/_7sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:foreground="?selectableItemBackground"
+        android:layout_width="@dimen/_120sdp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_exam_serial_time"
+            android:text="পরীক্ষা ১ : 3:03 মিনিট"
+            android:textColor="#FC19053C"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_chapter_list"
+            android:text="অধ্যায় ১, অধ্যায় ২, অধ্যায় ৩"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_12sdp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_correct_ans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_correct_answer_small"
+                android:text="32"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:drawablePadding="@dimen/_3sdp"
+                />
+
+            <TextView
+                android:id="@+id/tv_wrong_ans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_incorrect_answer_small"
+                android:text="34"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:drawablePadding="@dimen/_3sdp"
+                />
+
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_total"
+                android:text="33"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:drawablePadding="@dimen/_3sdp"
+                />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

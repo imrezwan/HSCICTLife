@@ -7,6 +7,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +42,7 @@ public class HomeFragment extends Fragment {
     CCodeAdapter cCodeAdapter;
     ArrayList<CCode> cCodeArrayList = new ArrayList<>();
 
-    Button mGiveExam;
+    Button mGiveExam, mRunCode;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -81,16 +83,28 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Fragment fragment = QuizFragment.newInstance();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.setCustomAnimations
-                        (android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-                transaction.replace(R.id.container_area, fragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                loadFragment(fragment);
+            }
+        });
+
+        mRunCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = ToolsFragment.newInstance();
+                loadFragment(fragment);
             }
         });
 
         return view;
+    }
+
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.setCustomAnimations
+                (android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        transaction.replace(R.id.container_area, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     private void restoreCodeDataFromDB() {
@@ -101,18 +115,25 @@ public class HomeFragment extends Fragment {
                 ICTDatabase ictDatabase = ICTDatabase.getInstance(getContext());
                 CCodeDao cCodeDao = ictDatabase.cCodeDao();
                 cCodeArrayList.addAll(cCodeDao.getAll());
-                cCodeAdapter.setResults(cCodeArrayList);
+
+                new Handler(Looper.getMainLooper()).post(new Runnable(){
+                    @Override
+                    public void run() {
+                        cCodeAdapter.setResults(cCodeArrayList);
+                        if(cCodeArrayList.size() > 0){
+                            mLastCodeRv.setVisibility(View.VISIBLE);
+                            mCodeNotFoundLayout.setVisibility(View.GONE);
+                        }
+                        else{
+                            mLastCodeRv.setVisibility(View.GONE);
+                            mCodeNotFoundLayout.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
 
                 Log.d("HOMEC", cCodeArrayList.toString());
 
-                if(cCodeArrayList.size() > 0){
-                    mLastCodeRv.setVisibility(View.VISIBLE);
-                    mCodeNotFoundLayout.setVisibility(View.GONE);
-                }
-                else{
-                    mLastCodeRv.setVisibility(View.GONE);
-                    mCodeNotFoundLayout.setVisibility(View.VISIBLE);
-                }
+
             }
         }).start();
     }
@@ -142,18 +163,26 @@ public class HomeFragment extends Fragment {
                 ICTDatabase ictDatabase = ICTDatabase.getInstance(getContext());
                 LastStudyResultDao lastStudyResultDao = ictDatabase.lastStudyResultDao();
                 lastStudyResultArrayList.addAll(lastStudyResultDao.getAll());
-                examResultAdapter.setResults(lastStudyResultArrayList);
+
+
+                new Handler(Looper.getMainLooper()).post(new Runnable(){
+                    @Override
+                    public void run() {
+                        examResultAdapter.setResults(lastStudyResultArrayList);
+                        if(lastStudyResultArrayList.size() > 0){
+                            mLastStudyRv.setVisibility(View.VISIBLE);
+                            mStudyResultNotFoundLayout.setVisibility(View.GONE);
+                        }
+                        else{
+                            mLastStudyRv.setVisibility(View.GONE);
+                            mStudyResultNotFoundLayout.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
 
                 Log.d("HOME", lastStudyResultArrayList.toString());
 
-                if(lastStudyResultArrayList.size() > 0){
-                    mLastStudyRv.setVisibility(View.VISIBLE);
-                    mStudyResultNotFoundLayout.setVisibility(View.GONE);
-                }
-                else{
-                    mLastStudyRv.setVisibility(View.GONE);
-                    mStudyResultNotFoundLayout.setVisibility(View.VISIBLE);
-                }
+
             }
         }).start();
     }
@@ -170,6 +199,8 @@ public class HomeFragment extends Fragment {
 
         mLastCodeRv = view.findViewById(R.id.rv_code_run_list);
         mCodeNotFoundLayout = view.findViewById(R.id.ll_no_code);
+
+        mRunCode = view.findViewById(R.id.btn_code_run);
 
     }
 }

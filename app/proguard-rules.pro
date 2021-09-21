@@ -19,3 +19,17 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keepclassmembers class com.rezwan_cs.hscictlife.modelclasses.* {
+*;
+}
+
+-dontwarn org.w3c.dom.**
+-dontwarn org.joda.time.**
+-dontwarn org.shaded.apache.**
+-dontwarn org.ietf.jgss.**
+
+-dontwarn retrofit.**
+-keep class retrofit.* { *; }
+-keepattributes Signature
+-keepattributes Exceptions

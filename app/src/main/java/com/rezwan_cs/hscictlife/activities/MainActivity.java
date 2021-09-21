@@ -22,6 +22,8 @@ import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.rezwan_cs.hscictlife.R;
 import com.rezwan_cs.hscictlife.commons.RetrofitInstance;
 import com.rezwan_cs.hscictlife.fragments.mainpage.HomeFragment;
@@ -158,7 +160,6 @@ public class MainActivity extends AppCompatActivity {
         navigation =
                 findViewById(R.id.nav_main_bottom_bar);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
     }
 
     @Override
@@ -172,7 +173,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(currentUser == null){
+            startActivity(new Intent(MainActivity.this, InputNameActivity.class));
+            finish();
+        }
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener
             mOnNavigationItemSelectedListener

@@ -146,6 +146,7 @@ public class McqExamPlayActivity extends AppCompatActivity implements View.OnCli
         intent.putExtra(Constants.EXTRA_EXAM_CURRECT_ANSWER, currectAnswer);
         intent.putExtra(Constants.EXTRA_EXAM_TOTAL_ANSWERED, answeredQuestion);
         startActivity(intent);
+        finish();
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 

@@ -28,7 +28,7 @@ public class AboutDeveloperDiolog {
         fb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/rezwan.pranto.5"));
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/rezwan2525"));
                 context.startActivity(i);
             }
         });
@@ -36,7 +36,7 @@ public class AboutDeveloperDiolog {
         git.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/RkPranto?tab=repositories"));
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/rezwan2525?tab=repositories"));
                 context.startActivity(i);
             }
         });

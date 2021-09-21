@@ -200,6 +200,7 @@
                         android:textColor="@color/colorSweetRed"/>
 
                     <Button
+                        android:id="@+id/btn_code_run"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="কোড রান করুন"
